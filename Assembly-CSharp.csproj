@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>10.0.20506</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <RootNamespace></RootNamespace>
+    <ProjectGuid>{F5BE45ED-F2DF-CD7B-532D-DE9B60EF82B7}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <AssemblyName>Assembly-CSharp</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <BaseDirectory>Assets</BaseDirectory>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Temp\bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;UNITY_5_3_1;UNITY_5_3;UNITY_5;ENABLE_NEW_BUGREPORTER;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_DUCK_TYPING;ENABLE_FRAME_DEBUGGER;ENABLE_GENERICS;ENABLE_HOME_SCREEN;ENABLE_IMAGEEFFECTS;ENABLE_LIGHT_PROBES_LEGACY;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_PLUGIN_INSPECTOR;ENABLE_SHADOWS;ENABLE_SINGLE_INSTANCE_BUILD_SETTING;ENABLE_SPRITERENDERER_FLIPPING;ENABLE_SPRITES;ENABLE_SPRITE_POLYGON;ENABLE_TERRAIN;ENABLE_RAKNET;ENABLE_UNET;ENABLE_UNITYEVENTS;ENABLE_VR;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_HUB;ENABLE_CLOUD_PROJECT_ID;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_METRICS;ENABLE_EDITOR_METRICS_CACHING;INCLUDE_DYNAMIC_GI;INCLUDE_GI;INCLUDE_IL2CPP;INCLUDE_DIRECTX12;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;ENABLE_LOCALIZATION;ENABLE_ANDROID_ATLAS_ETC1_COMPRESSION;ENABLE_EDITOR_TESTS_RUNNER;UNITY_STANDALONE_OSX;UNITY_STANDALONE;ENABLE_SUBSTANCE;ENABLE_GAMECENTER;ENABLE_TEXTUREID_MAP;ENABLE_RUNTIME_GI;ENABLE_MOVIES;ENABLE_NETWORK;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_LOG_MIXED_STACKTRACE;ENABLE_UNITYWEBREQUEST;ENABLE_CLUSTERINPUT;ENABLE_WEBSOCKET_HOST;ENABLE_MONO;ENABLE_PROFILER;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_OSX;UNITY_TEAM_LICENSE;UNITY_PRO_LICENSE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <NoWarn>0169</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>Temp\bin\Release\</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <NoWarn>0169</NoWarn>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.XML" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="UnityEngine">
+      <HintPath>/Applications/Unity/Unity.app/Contents/Frameworks/Managed/UnityEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor">
+      <HintPath>/Applications/Unity/Unity.app/Contents/Frameworks/Managed/UnityEditor.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+     <Compile Include="Assets\Bar.cs" />
+     <Compile Include="Assets\Barrier.cs" />
+     <Compile Include="Assets\Cube.cs" />
+     <Compile Include="Assets\CubePool.cs" />
+     <Compile Include="Assets\GDGeek\ATest.cs" />
+     <Compile Include="Assets\GDGeek\BoomTest.cs" />
+     <Compile Include="Assets\GDGeek\MeshTest.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\7zip\Common\CRC.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\7zip\Common\CommandLineParser.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\7zip\Common\InBuffer.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\7zip\Common\OutBuffer.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\7zip\Compress\LZ\IMatchFinder.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\7zip\Compress\LZ\LzBinTree.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\7zip\Compress\LZ\LzInWindow.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\7zip\Compress\LZ\LzOutWindow.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\7zip\Compress\LZMA\LzmaBase.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\7zip\Compress\LZMA\LzmaDecoder.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\7zip\Compress\LZMA\LzmaEncoder.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\7zip\Compress\LzmaAlone\LzmaAlone.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\7zip\Compress\LzmaAlone\LzmaBench.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\7zip\Compress\LzmaAlone\Properties\Resources.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\7zip\Compress\RangeCoder\RangeCoder.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\7zip\Compress\RangeCoder\RangeCoderBit.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\7zip\Compress\RangeCoder\RangeCoderBitTree.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\7zip\GK7Zip.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\7zip\ICoder.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\GDGeek\FSM\FSM.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\GDGeek\FSM\FSMEvent.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\GDGeek\FSM\State.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\GDGeek\FSM\StateWithEventMap.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\GDGeek\FSM\TaskState.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\GDGeek\JsonFx\AotSafe.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\GDGeek\JsonFx\JsonConverters.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\GDGeek\JsonFx\JsonDataHandler.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\GDGeek\JsonFx\JsonFx.Json\About.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\GDGeek\JsonFx\JsonFx.Json\DataReaderProvider.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\GDGeek\JsonFx\JsonFx.Json\DataWriterProvider.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\GDGeek\JsonFx\JsonFx.Json\EcmaScriptIdentifier.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\GDGeek\JsonFx\JsonFx.Json\EcmaScriptWriter.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\GDGeek\JsonFx\JsonFx.Json\IDataReader.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\GDGeek\JsonFx\JsonFx.Json\IDataWriter.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\GDGeek\JsonFx\JsonFx.Json\IJsonSerializable.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\GDGeek\JsonFx\JsonFx.Json\JsonDataReader.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\GDGeek\JsonFx\JsonFx.Json\JsonDataWriter.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\GDGeek\JsonFx\JsonFx.Json\JsonIgnoreAttribute.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\GDGeek\JsonFx\JsonFx.Json\JsonMemberAttribute.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\GDGeek\JsonFx\JsonFx.Json\JsonNameAttribute.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\GDGeek\JsonFx\JsonFx.Json\JsonOptInAttribute.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\GDGeek\JsonFx\JsonFx.Json\JsonReader.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\GDGeek\JsonFx\JsonFx.Json\JsonReaderSettings.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\GDGeek\JsonFx\JsonFx.Json\JsonSerializationException.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\GDGeek\JsonFx\JsonFx.Json\JsonSpecifiedPropertyAttribute.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\GDGeek\JsonFx\JsonFx.Json\JsonToken.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\GDGeek\JsonFx\JsonFx.Json\JsonWriter.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\GDGeek\JsonFx\JsonFx.Json\JsonWriterSettings.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\GDGeek\JsonFx\JsonFx.Json\Properties\AssemblyInfo.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\GDGeek\JsonFx\JsonFx.Json\Properties\AssemblyVersion.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\GDGeek\JsonFx\JsonFx.Json\TypeCoercionUtility.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\GDGeek\JsonFx\JsonFx.Json\XmlDataReader.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\GDGeek\JsonFx\JsonFx.Json\XmlDataWriter.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\GDGeek\Pool.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\GDGeek\PoolObject.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\GDGeek\Task\Filter.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\GDGeek\Task\Task.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\GDGeek\Task\TaskCheck.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\GDGeek\Task\TaskCircle.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\GDGeek\Task\TaskDelegate.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\GDGeek\Task\TaskList.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\GDGeek\Task\TaskList3.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\GDGeek\Task\TaskLog.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\GDGeek\Task\TaskManager.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\GDGeek\Task\TaskPack.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\GDGeek\Task\TaskPartRunner.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\GDGeek\Task\TaskPushBack.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\GDGeek\Task\TaskRunner.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\GDGeek\Task\TaskSet.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\GDGeek\Task\TaskTest.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\GDGeek\Task\TaskWait.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\GDGeek\Toolkits\CameraShake.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\GDGeek\Toolkits\GlobalUI.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\GDGeek\Toolkits\LoadingWindow.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\GDGeek\Toolkits\OffsetCamera.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\GDGeek\Toolkits\OffsetUI.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\GDGeek\Toolkits\SampleAnimation.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\GDGeek\Tweener\IgnoreTimeScale.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\GDGeek\Tweener\Tween.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\GDGeek\Tweener\TweenAlpha.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\GDGeek\Tweener\TweenCamera.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\GDGeek\Tweener\TweenGroupAlpha.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\GDGeek\Tweener\TweenLocalPosition.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\GDGeek\Tweener\TweenRotation.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\GDGeek\Tweener\TweenScale.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\GDGeek\Tweener\TweenShake.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\GDGeek\Tweener\TweenTask.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\GDGeek\Tweener\TweenValue.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\GDGeek\Tweener\TweenWorldPosition.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\GDGeek\Web\WebData.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\GDGeek\Web\WebLoaderTask.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\GDGeek\Web\WebPack.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\GDGeek\Web\WebTask.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\GDGeek\Web\WebTaskFactory.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\GDGeek\Web\WebTest.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\GDGeek\Web\WebTimestamp.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\GDGeek\WebPlayer\WebPlayer.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\Voxel\Color\VoxelColorMaster.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\Voxel\Color\VoxelColorSet.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\Voxel\Common\VectorInt2.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\Voxel\Common\VectorInt3.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\Voxel\Common\VectorInt4.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\Voxel\Ctrl\TweenVoxel.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\Voxel\Ctrl\TweenVoxelBlow.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\Voxel\Ctrl\VoxelChangeColor.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\Voxel\Ctrl\VoxelFileMaker.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\Voxel\Ctrl\VoxelInstantiation.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\Voxel\Ctrl\VoxelMaker.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\Voxel\Ctrl\VoxelManager.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\Voxel\Ctrl\VoxelMapMaker.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\Voxel\Ctrl\VoxelParticlePool.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\Voxel\Ctrl\VoxelPool.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\Voxel\Ctrl\VoxelPoolObject.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\Voxel\Ctrl\VoxelReader.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\Voxel\Ctrl\VoxelResource.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\Voxel\Ctrl\VoxelWriter.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\Voxel\Face\VoxelFace.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\Voxel\Face\VoxelHead.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\Voxel\Face\VoxelLookat.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\Voxel\Face\VoxelNeck.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\Voxel\Face\VoxelTalkManager.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\Voxel\JoinVoxel.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\Voxel\Model\VoxelASCII.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\Voxel\Model\VoxelCharPool.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\Voxel\Model\VoxelData.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\Voxel\Model\VoxelFileLoader.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\Voxel\Model\VoxelFunction.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\Voxel\Model\VoxelFunctionManager.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\Voxel\Model\VoxelJsonInfo.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\Voxel\Model\VoxelJsonLoader.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\Voxel\Model\VoxelLoader.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\Voxel\Model\VoxelModel.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\Voxel\Model\VoxelModelCache.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\Voxel\Model\VoxelModelEditor.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\Voxel\Model\VoxelModelSerialize.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\Voxel\Model\VoxelTextAssetLoader.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\Voxel\Model\VoxelWebLoader.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\Voxel\Pool\VoxelPool_.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\Voxel\SplitVoxel.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\Voxel\View\New\VoxelFace.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\Voxel\View\New\VoxelLattice.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\Voxel\View\New\VoxelPoint.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\Voxel\View\New\VoxelPolygon.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\Voxel\View\Particle\VoxelEmitter.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\Voxel\View\Particle\VoxelEmitterColor.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\Voxel\View\Particle\VoxelEmitterColorInspector.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\Voxel\View\Particle\VoxelEmitterColorMesh.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\Voxel\View\Particle\VoxelEmitterFunc.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\Voxel\View\Particle\VoxelEmitterShape.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\Voxel\View\Particle\VoxelEmitterShapeBox.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\Voxel\View\Particle\VoxelEmitterShapeCone.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\Voxel\View\Particle\VoxelParticle.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\Voxel\View\TweenVoxel.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\Voxel\View\UI\Text\VoxelChar.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\Voxel\View\UI\Text\VoxelFont.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\Voxel\View\UI\Text\VoxelFontManager.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\Voxel\View\UI\Text\VoxelText.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\Voxel\View\UI\Text\VoxelTextCreater.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\Voxel\View\UI\VoxelUIManager.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\Voxel\View\UI\VoxelUIObject.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\Voxel\View\Voxel.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\Voxel\View\VoxelBoom.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\Voxel\View\VoxelDrawMesh.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\Voxel\View\VoxelHandler.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\Voxel\View\VoxelJson.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\Voxel\View\VoxelMesh.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\Voxel\View\VoxelProperty.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\Voxel\View\VoxelRenderer.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\Voxel\View\VoxelReverse.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\Voxel\View\VoxelShadow.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\Voxel\View\VoxelShadowHandler.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\Voxel\View\VoxelTransformer.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\Voxel\View\builder\Build.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\Voxel\View\builder\IVoxelBuilder.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\Voxel\View\builder\VoxelData2Point.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\Voxel\View\builder\VoxelData2PointTask.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\Voxel\View\builder\VoxelDirector.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\Voxel\View\builder\VoxelDrawData.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\Voxel\View\builder\VoxelGeometry.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\Voxel\View\builder\VoxelGroups.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\Voxel\View\builder\VoxelMeshBuild.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\Voxel\View\builder\VoxelProduct.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\Voxel\View\builder\VoxelRemoveFace.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\Voxel\View\builder\VoxelRemoveSameVertices.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\Voxel\View\builder\VoxelShadowBuild.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\Voxel\View\builder\VoxelSplitSmall.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\Voxel\View\test.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\Voxel\VoxelEffect.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\Voxel\VoxelFile.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\Voxel\VoxelFormater.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\Voxel\VoxelSplitFile.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\Voxel\VoxelStruct.cs" />
+     <Compile Include="Assets\GDGeek\Plugins\WebGL\For7DGame.cs" />
+     <Compile Include="Assets\GDGeek\Test\VoxelTest.cs" />
+     <Compile Include="Assets\Lump.cs" />
+     <Compile Include="Assets\Matrix.cs" />
+     <Compile Include="Assets\Mouse2VR.cs" />
+     <Compile Include="Assets\Trigger.cs" />
+     <None Include="Assets\GDGeek\Plugins\GDGeek\JsonFx\JsonFx.Json\Readme.txt" />
+     <None Include="Assets\GDGeek\Media\Material\VoxelNormal.shader" />
+     <None Include="Assets\GDGeek\Plugins\GDGeek\JsonFx\JsonFx.Json\License.txt" />
+     <None Include="Assets\GDGeek\Media\Material\VoxelMesh.shader" />
+     <None Include="Assets\GDGeek\Media\Material\TestShader.shader" />
+     <None Include="Assets\GDGeek\Plugins\Voxel\View\Particle\VoxelParticle.shader" />
+     <None Include="Assets\GDGeek\Media\Material\OutLine.shader" />
+     <None Include="Assets\GDGeek\Media\Old\VoxelMesh.shader" />
+     <None Include="Assets\GDGeek\Media\Material\Side2.shader" />
+     <None Include="Assets\GDGeek\Plugins\Voxel\Font\VoxelFont.shader" />
+     <None Include="Assets\GDGeek\Media\Material\Voxel.shader" />
+     <None Include="Assets\GDGeek\Plugins\GDGeek\JsonFx\History.txt" />
+     <None Include="Assets\GDGeek\Media\Material\VoxelShadow.shader" />
+     <None Include="Assets\GDGeek\Media\Material\VoxelOutline.shader" />
+     <None Include="Assets\GDGeek\Plugins\Voxel\View\Font\Font.shader" />
+     <None Include="Assets\GDGeek\Plugins\GDGeek\JsonFx\TODO.txt" />
+ <Reference Include="UnityEngine.UI">
+ <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.Networking">
+ <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
+ </Reference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  
+</Project>
