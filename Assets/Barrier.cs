@@ -40,7 +40,7 @@ public class Barrier : MonoBehaviour {
 
 		bars = this.GetComponentsInChildren<Bar> ();
 		//_lines = new LineRenderer[n];
-		Debug.Log (bars.Length);
+//		Debug.Log (bars.Length);
 	}
 	public void setBarrier(int horizontal, int vertical, int height){
 		this.gameObject.transform.localPosition = new Vector3 (-height*10/2,-vertical*10/2,-horizontal*10/2);

@@ -44,7 +44,7 @@ public class Bar : MonoBehaviour {
 
 		lines = this.GetComponentsInChildren<LineRenderer> ();
 		//_lines = new LineRenderer[n];
-		Debug.Log (lines.Length);
+//		Debug.Log (lines.Length);
 	}
 	// Use this for initialization
 	void Start () {
