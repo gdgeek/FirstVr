@@ -8,8 +8,9 @@ public class CubePool : MonoBehaviour {
 	public Cube _phototype = null;
 	private static CubePool instance_ = null;
 	// Use this for initialization
-	void Start () {
-		
+
+	public static CubePool GetInstance(){
+		return CubePool.instance_;
 	}
 	private GameObject createPrototype(){
 
