@@ -10,6 +10,8 @@ public class Brush : MonoBehaviour {
 		Remove = 2,
 
 	}
+	public GameObject _add;
+	public GameObject _remove;
 	private int action_ = (int)(Action.None);
 	private FSM fsm_ = new FSM (); 
 
@@ -47,6 +49,9 @@ public class Brush : MonoBehaviour {
 			}
 			return "";
 		});
+		swem.onStart += delegate {
+
+		};
 		return swem;
 
 
