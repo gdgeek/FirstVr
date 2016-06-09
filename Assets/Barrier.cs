@@ -7,7 +7,7 @@ public class Barrier : MonoBehaviour {
 	public Bar[] _bars = null;
 
 
-	public void setBar(int n){
+	public void setBar(int n, float unit){
 		Bar[] bars = this.GetComponentsInChildren<Bar> ();
 		_bars = new Bar[n];
 
@@ -34,7 +34,7 @@ public class Barrier : MonoBehaviour {
 
 		}
 		for (int i = 0; i < _bars.Length; ++i) {
-			_bars [i].gameObject.transform.localPosition = new Vector3 (0, 0, i*10);
+			_bars [i].gameObject.transform.localPosition = new Vector3 (0, 0, i*unit);
 			_bars [i].gameObject.transform.localEulerAngles = Vector3.zero;
 		}
 
@@ -42,11 +42,11 @@ public class Barrier : MonoBehaviour {
 		//_lines = new LineRenderer[n];
 //		Debug.Log (bars.Length);
 	}
-	public void setBarrier(int horizontal, int vertical, int height){
-		this.gameObject.transform.localPosition = new Vector3 (-height*10/2,-vertical*10/2,-horizontal*10/2);
-		setBar (horizontal+1);
+	public void setBarrier(int horizontal, int vertical, int height, float unit){
+		this.gameObject.transform.localPosition = new Vector3 (-height*unit/2.0f,-vertical*unit/2.0f,-horizontal*unit/2.0f);
+		setBar (horizontal+1, unit);
 		for (int i = 0; i < _bars.Length; ++i) {
-			_bars [i].setLine (vertical+1, height);
+			_bars [i].setLine (vertical+1, height, unit);
 		}
 
 	}

@@ -3,6 +3,7 @@ using System.Collections;
 using GDGeek;
 
 public class Matrix : MonoBehaviour {
+	
 	public Barrier _x = null;
 	public Barrier _y = null;
 	public Barrier _z = null;
@@ -10,21 +11,40 @@ public class Matrix : MonoBehaviour {
 	public GameObject _cursor = null;
 	public BoxCollider _box = null;
 	public Building _buinding = null;
+	public float _unit = 10.0f;
 	private Task goLine(){
 		return new Task();
 			
 	}
 	private State getInit(){
 		StateWithEventMap init = TaskState.Create (delegate() {
+			_cursor.transform.localScale = Vector3.one * _unit;
+
 			TaskSet ts = new TaskSet();
+
 			ts.push(goLine());
 			return ts;
 		}, this.fsm_, "draw");
 		return init;
 	}
 	private State getDraw(){
+		
+		StateWithEventMap swem = new StateWithEventMap ();
 
-		return new State();
+		/*	swem.addAction ("add", delegate(FSMEvent evt) {
+			action_ |= (int)(Action.Add);
+		});
+		swem.addAction ("no_add", delegate(FSMEvent evt) {
+			action_ ^= (int)(Action.Add);
+		});
+		swem.addAction ("remove", delegate(FSMEvent evt) {
+			action_ |= (int)(Action.Remove);
+		});
+		swem.addAction ("no_remove", delegate(FSMEvent evt) {
+			action_ ^= (int)(Action.Remove);
+		});
+*/
+		return swem;
 	}
 
 
@@ -45,8 +65,31 @@ public class Matrix : MonoBehaviour {
 		};
 		return swem;
 	}
+	private State getRemove(){
+		StateWithEventMap swem = new StateWithEventMap ();
+		swem.addAction ("exit", "out");
+		swem.addAction ("stay", delegate(FSMEvent evt) {
+			GameObject go = (GameObject)(evt.obj);
+			this._cursor.transform.position = cell2position (position2cell (go.transform.position));
+			_buinding.addCube(position2cell (this._cursor.transform.position),(Color)(evt.obj));
+		});
 
 
+		return swem;
+	
+	}
+	private State getAdd(){
+		StateWithEventMap swem = new StateWithEventMap ();
+		swem.addAction ("exit", "out");
+		swem.addAction ("stay", delegate(FSMEvent evt) {
+			GameObject go = (GameObject)(evt.obj);
+			this._cursor.transform.position = cell2position (position2cell (go.transform.position));
+			_buinding.addCube(position2cell (this._cursor.transform.position),(Color)(evt.obj));
+		});
+
+
+		return swem;
+	}
 	private State getIn(){
 		StateWithEventMap swem = new StateWithEventMap ();
 		swem.addAction ("exit", "out");
@@ -54,16 +97,17 @@ public class Matrix : MonoBehaviour {
 			GameObject go = (GameObject)(evt.obj);
 			this._cursor.transform.position = cell2position (position2cell (go.transform.position));
 		});
-		swem.addAction ("add", delegate(FSMEvent evt) {
-			Debug.Log (position2cell (this._cursor.transform.position));
-		});
+
+
 		return swem;
 	}
 	public void setMatrix(int x, int y, int z){
-		_x.setBarrier (z, y, x);
-		_y.setBarrier(z, x, y);
-		_z.setBarrier(x, y, z);
-		_box.size = new Vector3 (x*10, y*10, z*10);
+		_x.setBarrier (z, y, x, this._unit);
+		_y.setBarrier(z, x, y, this._unit);
+		_z.setBarrier(x, y, z, this._unit);
+		_box.size = new Vector3 (x*_unit, y*_unit, z*_unit);
+		//_buinding.setup ();
+		_buinding.setup(new VectorInt3(x, y, z), _unit);
 	}
 	void Start () {
 		this.setMatrix (5, 3, 4);
@@ -72,6 +116,8 @@ public class Matrix : MonoBehaviour {
 		fsm_.addState ("draw", "out", getDraw ());
 		fsm_.addState ("out", getOut (), "draw");
 		fsm_.addState ("in", getIn (), "draw");
+		fsm_.addState ("add", getAdd (), "draw");
+		fsm_.addState ("remove", getRemove (), "draw");
 	//	fsm_.addState ("out", getOut (), "draw");
 
 		fsm_.init ("init");
@@ -79,7 +125,7 @@ public class Matrix : MonoBehaviour {
 	}
 	private VectorInt3 position2cell(Vector3 position){
 		Vector3 o = _box.size / 2 + position - this.gameObject.transform.position;
-		VectorInt3 cell = new VectorInt3(Mathf.FloorToInt(o.x/10),Mathf.FloorToInt(o.y/10),Mathf.FloorToInt(o.z/10));
+		VectorInt3 cell = new VectorInt3(Mathf.FloorToInt(o.x/_unit),Mathf.FloorToInt(o.y/_unit),Mathf.FloorToInt(o.z/_unit));
 		cell.x = Mathf.Max (cell.x, 0);
 		cell.y = Mathf.Max (cell.y, 0);
 		cell.z = Mathf.Max (cell.z, 0);
@@ -89,9 +135,10 @@ public class Matrix : MonoBehaviour {
 		return cell;
 	}
 	private Vector3 cell2position(VectorInt3 cell){
-		Vector3 ret = new Vector3 (cell.x*10,cell.y*10, cell.z*10) + this.gameObject.transform.position - _box.size / 2 +new Vector3(5,5,5);
+		Vector3 ret = new Vector3 (cell.x*_unit,cell.y*_unit, cell.z*_unit) + this.gameObject.transform.position - _box.size / 2 +new Vector3(_unit/2.0f,_unit/2.0f,_unit/2.0f);
 		return ret;
 	}
+
 	public void OnTriggerStay(Collider other){
 		FSMEvent evt = new FSMEvent ();
 		evt.msg = "stay";
@@ -107,6 +154,7 @@ public class Matrix : MonoBehaviour {
 	public void OnTriggerExit(Collider other){
 		fsm_.post ("exit");
 	}
+
 
 
 }

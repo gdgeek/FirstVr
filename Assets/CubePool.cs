@@ -23,7 +23,8 @@ public class CubePool : MonoBehaviour {
 
 	}
 	
-	public GameObject create(){
-			return pool_.create ();
+	public Cube create(){
+		GameObject obj = pool_.create ();
+		return obj.GetComponent<Cube> ();
 	}
 }
