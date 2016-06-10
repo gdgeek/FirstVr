@@ -1,0 +1,17 @@
+/Users/ruidi/project/FirstVr/Temp/bin/Debug/Assembly-CSharp-firstpass.dll.mdb
+/Users/ruidi/project/FirstVr/Temp/bin/Debug/Assembly-CSharp-firstpass.dll
+/Users/ruidi/project/FirstVr/obj/Debug/Assembly-CSharp-firstpass.dll
+/Users/ruidi/project/FirstVr/obj/Debug/Assembly-CSharp-firstpass.dll.mdb
+/Users/ruidi/project/FirstVr/Temp/bin/Debug/UnityEngine.dll
+/Users/ruidi/project/FirstVr/Temp/bin/Debug/UnityEditor.dll
+/Users/ruidi/project/FirstVr/Temp/bin/Debug/UnityEngine.UI.dll
+/Users/ruidi/project/FirstVr/Temp/bin/Debug/UnityEngine.Networking.dll
+/Users/ruidi/project/FirstVr/Temp/bin/Debug/Mono.Cecil.dll
+/Users/ruidi/project/FirstVr/Temp/bin/Debug/Unity.SerializationLogic.dll
+/Users/ruidi/project/FirstVr/Temp/bin/Debug/Unity.DataContract.dll
+/Users/ruidi/project/FirstVr/Temp/bin/Debug/ICSharpCode.NRefactory.dll
+/Users/ruidi/project/FirstVr/Temp/bin/Debug/Unity.UNetWeaver.dll
+/Users/ruidi/project/FirstVr/Temp/bin/Debug/Unity.UNetWeaver.dll.mdb
+/Users/ruidi/project/FirstVr/Temp/bin/Debug/Unity.CecilTools.dll
+/Users/ruidi/project/FirstVr/Temp/bin/Debug/Mono.Cecil.Pdb.dll
+/Users/ruidi/project/FirstVr/Temp/bin/Debug/Mono.Cecil.Mdb.dll

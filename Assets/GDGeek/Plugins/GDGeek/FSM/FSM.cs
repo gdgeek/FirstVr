@@ -230,6 +230,11 @@ namespace GDGeek{
 			evt.msg = msg;
 			this.postEvent(evt);
 		}
+
+		public void post(string msg, object obj){
+
+			this.postEvent(new FSMEvent(msg, obj));
+		}
 		public void postEvent(FSMEvent evt){
 
 			string outs = "";

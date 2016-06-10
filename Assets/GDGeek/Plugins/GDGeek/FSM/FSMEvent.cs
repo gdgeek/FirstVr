@@ -31,9 +31,40 @@ using System.Collections;
 
 namespace GDGeek{
 	public class FSMEvent {
+		
+		private string msg_ = null;
+		private object obj_ = null;
 
-		public string msg = null;
-		public object obj = null;
+		public  FSMEvent(){
+			
+		}
+
+		public  FSMEvent(string m){
+			msg_ = m;
+		}
+		public  FSMEvent(string m, object o){
+			msg_ = m;
+			obj_ = o;
+
+		}
+		public object obj{
+			get{ 
+				return obj_;
+			}
+			set{ 
+				obj_ = value;
+			}
+		}
+		public string msg{
+			get{ 
+				return msg_;
+			}
+			set{ 
+				msg_ = value;
+			}
+
+
+		}
 
 	}
 }
