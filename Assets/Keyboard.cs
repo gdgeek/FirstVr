@@ -23,7 +23,8 @@ public class Keyboard : MonoBehaviour {
 				keys[i].upper();
 			}
 		};
-		//InputField.
+		swem.addAction ("shift", "lower");
+		swem.addAction ("number", "number");
 		return swem;
 	}
 
@@ -38,19 +39,57 @@ public class Keyboard : MonoBehaviour {
 				keys[i].lower();
 			}
 		};
+		swem.addAction ("shift", "upper");
+		swem.addAction ("number", "number");
 		//InputField.
 		return swem;
 	}
 
 
 	private State getNumber(){
-		return new State ();
+		StateWithEventMap swem = new StateWithEventMap ();
+		swem.onStart += delegate {
+			Key[] keys = getKeys();
+			for(int i =0; i<keys.Length; ++i){
+
+				keys[i].number();
+			}
+		};
+		swem.addAction ("shift", "punctuation");
+		swem.addAction ("number", "lower");
+		//InputField.
+		return swem;
 	}
 
-
+	public void input(Key key){
+		if (key._type == Key.Type.Shift) {
+			fsm_.post ("shift");
+		}else if (key._type == Key.Type.Del) {
+			fsm_.post ("del");
+		}else if (key._type == Key.Type.Letter) {
+			fsm_.post ("letter",key.getText().text);
+		}else if (key._type == Key.Type.Shift) {
+			fsm_.post ("shift");
+		}else if (key._type == Key.Type.Space) {
+			fsm_.post ("space");
+		}else if (key._type == Key.Type.Number) {
+			fsm_.post ("number");
+		}
+	}
 
 	private State getPunctuation(){
-		return new State ();
+		StateWithEventMap swem = new StateWithEventMap ();
+		swem.onStart += delegate {
+			Key[] keys = getKeys();
+			for(int i =0; i<keys.Length; ++i){
+
+				keys[i].punctuation();
+			}
+		};
+		swem.addAction ("shift", "number");
+		swem.addAction ("number", "lower");
+		//InputField.
+		return swem;
 	}
 	void Start () {
 		fsm_.addState ("upper", getUpper());

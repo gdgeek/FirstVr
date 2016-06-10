@@ -18,7 +18,15 @@ public class Key : MonoBehaviour {
 	public string _number;
 	public string _punctuation; 
 	public Text _text = null;
-	private Text getText(){
+	public Image _image = null;
+	public Image getImage(){
+		if (_image == null) {
+			_image = this.gameObject.GetComponent<Image> ();
+		}
+		return _image;
+
+	}
+	public Text getText(){
 		if (_text == null) {
 			_text = this.gameObject.GetComponentInChildren<Text> ();
 		}

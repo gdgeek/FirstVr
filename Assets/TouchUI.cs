@@ -11,6 +11,7 @@ public class TouchUI : MonoBehaviour {
 	public Sprite _image = null;
 	public Key _key = null;
 	public KeyHighlight _hightlight;
+	public Keyboard _keyboard;
 
 	private FSM fsm_ = new FSM ();
 
@@ -24,20 +25,32 @@ public class TouchUI : MonoBehaviour {
 		StateWithEventMap swem = new StateWithEventMap ();
 		swem.onStart += delegate() {
 			if(_key!=null){
-				_hightlight.handle(_key);
+				_hightlight.fOver(_key);
 			}
+		};
+		swem.onOver += delegate() {
+			_hightlight.fNormal(_key);
 		};
 
 		swem.addAction ("keyin", delegate(FSMEvent evt) {
+
 			_key = (Key)(evt.obj);
-			_hightlight.handle(_key);
-			_hightlight.open();
+			if(_key){
+				_hightlight.fOver(_key);
+			}
 		});
 
+		swem.addAction ("down", delegate(FSMEvent evt) {
+			if(_key != null){
 
+				return "down";
+			}
+			return "";
+		});
 		swem.addAction ("keyout", delegate(FSMEvent evt) {
-			_hightlight.close();
-			//_hightlight.handle(_key);
+			if(_key != null){
+				_hightlight.fNormal(_key);
+			}
 		});
 		return swem;
 	}
@@ -45,6 +58,18 @@ public class TouchUI : MonoBehaviour {
 
 	private State getDown(){
 		StateWithEventMap swem = new StateWithEventMap ();
+		swem.onStart += delegate() {
+			if(_key!=null){
+				_hightlight.fDown(_key);
+				_keyboard.input(_key);
+
+			}
+		};
+		swem.onOver += delegate() {
+			_hightlight.fNormal(_key);
+		};
+
+		swem.addAction ("up", "up");
 		return swem;
 	}
 	// Use this for initialization
@@ -53,11 +78,9 @@ public class TouchUI : MonoBehaviour {
 		fsm_.addState ("nomal", getNormal ());
 		fsm_.addState ("up", getUp ());
 		fsm_.addState ("down", getDown ());
-		//fsm_.addState()
 		fsm_.init("up");
 	}
-	
-	// Update is called once per frame
+	  
 	void Update () {
 		var point = _camera.WorldToScreenPoint (this.gameObject.transform.position);
 
@@ -69,16 +92,22 @@ public class TouchUI : MonoBehaviour {
 		}
 
 		if (key != this._key) {
-
-			fsm_.post ("keyout");
-			if (key != null) {
-				fsm_.post ("keyin", key);
+			if (this._key != null) {
+				fsm_.post ("keyout");
 			}
+			fsm_.post ("keyin", key);
+
 
 		//	key.fingerOver ();
 		}
+		if (Input.GetKeyDown (KeyCode.Space)) {
 
+			fsm_.post ("down");
+		}
 	
-		
+		if (Input.GetKeyUp (KeyCode.Space)) {
+
+			fsm_.post ("up");
+		}
 	}
 }
