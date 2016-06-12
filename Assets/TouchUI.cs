@@ -4,14 +4,17 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using System.Collections.Generic;
 using GDGeek;
+using Valve.VR;
 
 public class TouchUI : MonoBehaviour {
+	public Rect _rect;
 	public Camera _camera;
 	public Canvas _canvas; 
 	public Sprite _image = null;
 	public Key _key = null;
 	public KeyHighlight _hightlight;
 	public Keyboard _keyboard;
+	public SteamVR_TrackedController _tracked = null;
 
 	private FSM fsm_ = new FSM ();
 
@@ -74,14 +77,36 @@ public class TouchUI : MonoBehaviour {
 	}
 	// Use this for initialization
 	void Start () {
+		_tracked.PadClicked += delegate(object sender, ClickedEventArgs e) {
+			fsm_.post ("down");
+		};
+		_tracked.PadUnclicked += delegate(object sender, ClickedEventArgs e) {
+
+			fsm_.post ("up");
+		};
 
 		fsm_.addState ("nomal", getNormal ());
 		fsm_.addState ("up", getUp ());
 		fsm_.addState ("down", getDown ());
 		fsm_.init("up");
 	}
-	  
+
+	VRControllerState_t controllerState;
 	void Update () {
+
+		var system = OpenVR.System;
+
+		if (system != null && system.GetControllerState(3, ref controllerState))
+		{
+			var pad = new Vector2(controllerState.rAxis0.x, controllerState.rAxis0.y);
+			Debug.Log (pad);
+			var pos = this.transform.localPosition;
+			pos.x = pad.x * 110f;
+			pos.y = pad.y * 70f;
+			this.transform.localPosition = pos;
+
+
+		}
 		var point = _camera.WorldToScreenPoint (this.gameObject.transform.position);
 
 		//button.

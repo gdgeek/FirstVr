@@ -7,6 +7,7 @@ public class BrushAdd : Brush{
 
 	public override void brush (VectorInt3 point, Building building){
 	//	Debug.Log ("Add");
+		Debug.Log("!!"+ point);
 		Cube cube = building.getCube(point);
 		if (cube == null) {
 			building.addCube (point, Color.red);

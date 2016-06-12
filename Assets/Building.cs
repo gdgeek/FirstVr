@@ -8,6 +8,11 @@ public class Building : MonoBehaviour {
 	private Dictionary<VectorInt3, Cube> _cubes= new Dictionary<VectorInt3, Cube>();
 	public void setup(VectorInt3 offset, float unit){
 		unit_ = unit;
+		//Debug.Log ("offset" + offset);
+		this.transform.localPosition = new Vector3 (-((float)(offset.x) - 1f) /2f*unit_,
+			-((float)(offset.y) - 1f) /2f*unit_,
+			-((float)(offset.z) - 1f) / 2f *unit_);
+			
 		//this.transform.localPosition = new Vector3()
 	}
 	public Cube getCube(VectorInt3 position){
@@ -32,14 +37,10 @@ public class Building : MonoBehaviour {
 	
 	}
 	public void addCube(VectorInt3 point, Color c){
-		Debug.Log (point);
 
-		//_cubes.
-		Debug.Log (c);
 		Cube cube = null;
 		if (_cubes.ContainsKey (point)) {
 			cube = _cubes [point];
-		
 		} else {
 			cube = CubePool.GetInstance ().create ();
 			cube.transform.parent = this.transform;
@@ -47,7 +48,7 @@ public class Building : MonoBehaviour {
 			_cubes [point] = cube;
 		}
 
-
+		Debug.Log (unit_ +"ace");
 		cube.setup (point, c, unit_);
 	}
 

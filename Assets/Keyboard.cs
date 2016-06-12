@@ -41,7 +41,6 @@ public class Keyboard : MonoBehaviour {
 		};
 		swem.addAction ("shift", "upper");
 		swem.addAction ("number", "number");
-		//InputField.
 		return swem;
 	}
 
@@ -50,7 +49,7 @@ public class Keyboard : MonoBehaviour {
 		StateWithEventMap swem = new StateWithEventMap ();
 		swem.onStart += delegate {
 			Key[] keys = getKeys();
-			for(int i =0; i<keys.Length; ++i){
+			for(int i = 0; i<keys.Length; ++i){
 
 				keys[i].number();
 			}
@@ -99,8 +98,5 @@ public class Keyboard : MonoBehaviour {
 		fsm_.init ("lower");
 	}
 	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+
 }

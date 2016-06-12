@@ -3,13 +3,14 @@ using System.Collections;
 using GDGeek;
 
 public class Pen : MonoBehaviour {
-
+	
 	enum Action{
 		None = 0,
 		Add = 1,
 		Remove = 2,
 
 	}
+	public SteamVR_TrackedController _track = null;
 	public BrushAdd _add;
 	public BrushRemove _remove;
 	public BrushNone _none;
@@ -72,6 +73,27 @@ public class Pen : MonoBehaviour {
 	}
 	// Use this for initialization
 	void Start () {
+		_track.TriggerClicked +=delegate(object sender, ClickedEventArgs e) {
+			fsm_.post ("drawing");
+		};
+		_track.TriggerUnclicked+=delegate(object sender, ClickedEventArgs e) {
+			fsm_.post ("drawed");
+		};
+
+
+		_track.Gripped +=delegate(object sender, ClickedEventArgs e) {
+			action_ |= (int)(Action.Remove);
+			action_ ^= (int)(Action.Add);
+			fsm_.post ("action");
+		};
+
+		_track.Ungripped +=delegate(object sender, ClickedEventArgs e) {
+			action_ ^= (int)(Action.Remove);
+			action_ |= (int)(Action.Add);
+			fsm_.post ("action");
+		};
+
+		//_track.Gripped
 		fsm_.addState ("pen", getPen ());
 
 		fsm_.addState ("add", getAdd (), "pen");
