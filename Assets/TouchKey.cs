@@ -32,6 +32,13 @@ public class TouchKey : TouchHandle {
 
 
 	public override Vector2 pad2pos(Vector2 pad){
+		/*
+		 * 
+		 *   __
+			/  \
+			\__/
+
+		*/
 		return new Vector2(pad.x * 220f -110f, pad.y * 140f - 70f);
 	}
 	public override void leave(){
@@ -51,6 +58,9 @@ public class TouchKey : TouchHandle {
 	public override void clicked(){
 		state_ = State.Clicked;
 		_clicked = _key;
+
+		_keyboard.input (_clicked);
+		//_key.getText
 		_hightlight.fDown (_clicked);
 		Debug.Log ("clicked");
 
