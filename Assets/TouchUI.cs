@@ -12,8 +12,8 @@ public class TouchUI : MonoBehaviour {
 	private TouchHandle handle_ = null;
 	public Camera _camera;
 	public GameObject _biao;
-
 	public SteamVR_TrackedController _tracked = null;
+	private VRControllerState_t controllerState_;
 
 	private FSM fsm_ = new FSM ();
 
@@ -101,7 +101,6 @@ public class TouchUI : MonoBehaviour {
 		fsm_.init("leave");
 	}
 
-	private VRControllerState_t controllerState_;
 	private void updatePosition(Vector2 pad){
 		var pos = handle_.pad2pos (pad);
 		var position = this.transform.localPosition;

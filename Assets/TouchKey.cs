@@ -23,12 +23,7 @@ public class TouchKey : TouchHandle {
 
 		}
 
-		/*if (state_ == State.Touched) {
-			_hightlight.fNormal (_key);
-			_hightlight.fOver (_key);
-			Debug.Log (obj.name);
-		}*/
-	}
+	
 
 
 	public override Vector2 pad2pos(Vector2 pad){
@@ -37,6 +32,11 @@ public class TouchKey : TouchHandle {
 		 *   __
 			/  \
 			\__/
+
+			___
+			|  |
+			|  |
+			---
 
 		*/
 		return new Vector2(pad.x * 220f -110f, pad.y * 140f - 70f);
