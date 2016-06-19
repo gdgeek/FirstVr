@@ -47,13 +47,7 @@ namespace GDGeek{
 								return nextState;
 							});
 		}
-		/*public void addAction(string evt, StateAction action){
-			if (!actionMap_.ContainsKey (evt)) {
-				actionMap_.Add (evt, action);		
-			} else {
-						
-			}
-		}*/
+
 		public void addAction(string evt, StateAction action){
 			if (!actionMap_.ContainsKey (evt)) {
 				actionMap_.Add (evt, action);		

@@ -8,6 +8,7 @@ public class Keyboard : MonoBehaviour {
 	private FSM fsm_ = new FSM ();
 	private Key[] keys_ = null;
 
+	public Rect _rect;
 	private Key[] getKeys(){
 		if (keys_ == null) {
 			keys_ = this.gameObject.GetComponentsInChildren<Key> (); 
