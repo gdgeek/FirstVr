@@ -23,7 +23,7 @@ public class TouchKey : TouchHandle {
 
 		}
 
-	
+	}
 
 
 	public override Vector2 pad2pos(Vector2 pad){
