@@ -7,132 +7,110 @@ using GDGeek;
 using Valve.VR;
 
 public class TouchUI : MonoBehaviour {
-	public Rect _rect;
+	
+	public TouchKey _touchKey = null;
+	private TouchHandle handle_ = null;
 	public Camera _camera;
-	public Canvas _canvas; 
-	public Sprite _image = null;
-	public Key _key = null;
-	public KeyHighlight _hightlight;
-	public Keyboard _keyboard;
+
 	public SteamVR_TrackedController _tracked = null;
 
 	private FSM fsm_ = new FSM ();
 
-	private State getNormal(){
+	private State getLeave(){
 		StateWithEventMap swem = new StateWithEventMap ();
+
+		swem.addAction ("touched", "touched");
+		swem.addAction ("clicked", "clicked");
 		return swem;
 	}
 
 
-	private State getUp(){
+	private State getTouch(){
 		StateWithEventMap swem = new StateWithEventMap ();
-		swem.onStart += delegate() {
-			if(_key!=null){
-				_hightlight.fOver(_key);
-			}
-		};
-		swem.onOver += delegate() {
-			_hightlight.fNormal(_key);
-		};
 
-		swem.addAction ("keyin", delegate(FSMEvent evt) {
 
-			_key = (Key)(evt.obj);
-			if(_key){
-				_hightlight.fOver(_key);
-			}
-		});
-
-		swem.addAction ("down", delegate(FSMEvent evt) {
-			if(_key != null){
-
-				return "down";
-			}
-			return "";
-		});
-		swem.addAction ("keyout", delegate(FSMEvent evt) {
-			if(_key != null){
-				_hightlight.fNormal(_key);
-			}
-		});
+		swem.addAction ("clicked", "clicked");
+		swem.addAction ("untouched", "leave");
 		return swem;
 	}
 
 
-	private State getDown(){
+	private State getClicked(){
 		StateWithEventMap swem = new StateWithEventMap ();
-		swem.onStart += delegate() {
-			if(_key!=null){
-				_hightlight.fDown(_key);
-				_keyboard.input(_key);
-
-			}
-		};
-		swem.onOver += delegate() {
-			_hightlight.fNormal(_key);
-		};
-
-		swem.addAction ("up", "up");
+	
+		swem.addAction ("untouched", "leave");
+		swem.addAction ("unclicked", "touched");
 		return swem;
 	}
 	// Use this for initialization
 	void Start () {
+		EasyTouch.On_TouchDown += delegate(Gesture gesture) {
+			var pos = _camera.ScreenToViewportPoint(gesture.position);
+			updatePosition(_camera.ScreenToViewportPoint(gesture.position));
+
+		};
+		handle_ = this._touchKey;
 		_tracked.PadClicked += delegate(object sender, ClickedEventArgs e) {
-			fsm_.post ("down");
+			fsm_.post ("clicked");
+		};
+
+		_tracked.PadTouched += delegate(object sender, ClickedEventArgs e) {
+			fsm_.post ("touched");
+		};
+		_tracked.PadUntouched += delegate(object sender, ClickedEventArgs e) {
+			fsm_.post ("untouched");
 		};
 		_tracked.PadUnclicked += delegate(object sender, ClickedEventArgs e) {
 
-			fsm_.post ("up");
+			fsm_.post ("unclicked");
 		};
 
-		fsm_.addState ("nomal", getNormal ());
-		fsm_.addState ("up", getUp ());
-		fsm_.addState ("down", getDown ());
-		fsm_.init("up");
+		fsm_.addState ("leave", getLeave ());
+		fsm_.addState ("touched", getTouch ());
+		fsm_.addState ("clicked", getClicked ());
+		fsm_.init("leave");
 	}
 
-	VRControllerState_t controllerState;
+	private VRControllerState_t controllerState_;
+	private void updatePosition(Vector2 pad){
+
+		var pos = handle_.pad2pos (pad);
+		var position = this.transform.localPosition;
+		position.x = pos.x;
+		position.y = pos.y;
+		this.transform.localPosition = position;
+	}
+	void FixedUpdate(){
+		
+		var system = OpenVR.System;
+		if (handle_ != null && system != null && system.GetControllerState(3, ref controllerState_))
+		{
+
+			updatePosition(new Vector2((controllerState_.rAxis0.x +1f)/2, (controllerState_.rAxis0.y+1f)/2));
+		
+		}
+	}
 	void Update () {
 
-		var system = OpenVR.System;
-
-		if (system != null && system.GetControllerState(3, ref controllerState))
-		{
-			var pad = new Vector2(controllerState.rAxis0.x, controllerState.rAxis0.y);
-			Debug.Log (pad);
-			var pos = this.transform.localPosition;
-			pos.x = pad.x * 110f;
-			pos.y = pad.y * 70f;
-			this.transform.localPosition = pos;
-
-
-		}
-		var point = _camera.WorldToScreenPoint (this.gameObject.transform.position);
-
-		//button.
-		var list = IPointerOverUI.IsPointerOverUIObjectS (_canvas, point);
-		Key key = null;
-		for (int i = 0; i < list.Count; ++i) {
-			key = list [i].gameObject.GetComponent<Key>();
-		}
-
-		if (key != this._key) {
-			if (this._key != null) {
-				fsm_.post ("keyout");
-			}
-			fsm_.post ("keyin", key);
-
-
-		//	key.fingerOver ();
-		}
 		if (Input.GetKeyDown (KeyCode.Space)) {
 
-			fsm_.post ("down");
+			fsm_.post ("clicked");
 		}
-	
+
 		if (Input.GetKeyUp (KeyCode.Space)) {
 
-			fsm_.post ("up");
+			fsm_.post ("unclicked");
 		}
+
+		if (Input.GetKeyDown (KeyCode.LeftCommand)) {
+
+			fsm_.post ("touched");
+		}
+
+		if (Input.GetKeyUp (KeyCode.LeftCommand)) {
+
+			fsm_.post ("untouched");
+		}
+
 	}
 }
