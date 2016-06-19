@@ -37,7 +37,7 @@ public class Matrix : MonoBehaviour {
 
 	private State getInit(){
 		StateWithEventMap init = TaskState.Create (delegate() {
-			_buoy.transform.localScale = Vector3.one * _unit;
+			_buoy.transform.localScale = Vector3.one * _unit*1.01f;
 
 			TaskSet ts = new TaskSet();
 

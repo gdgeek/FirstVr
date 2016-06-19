@@ -11,6 +11,7 @@ public class TouchUI : MonoBehaviour {
 	public TouchKey _touchKey = null;
 	private TouchHandle handle_ = null;
 	public Camera _camera;
+	public GameObject _biao;
 
 	public SteamVR_TrackedController _tracked = null;
 
@@ -21,6 +22,16 @@ public class TouchUI : MonoBehaviour {
 
 		swem.addAction ("touched", "touched");
 		swem.addAction ("clicked", "clicked");
+		swem.onStart += delegate() {
+			handle_.leave();
+			_biao.SetActive(false);
+			SphereCollider c = this.GetComponent<SphereCollider>();
+			c.enabled = false;
+		};
+
+		swem.onOver += delegate() {
+
+		};
 		return swem;
 	}
 
@@ -29,15 +40,33 @@ public class TouchUI : MonoBehaviour {
 		StateWithEventMap swem = new StateWithEventMap ();
 
 
+		swem.onStart += delegate() {
+			handle_.touched();
+
+			SphereCollider c = this.GetComponent<SphereCollider>();
+			c.enabled = true;
+			_biao.SetActive(true);
+		};
 		swem.addAction ("clicked", "clicked");
 		swem.addAction ("untouched", "leave");
 		return swem;
 	}
 
 
+	public void OnTriggerEnter(Collider other){
+		
+		handle_.touchWho (other.gameObject);
+	}
+
+
 	private State getClicked(){
 		StateWithEventMap swem = new StateWithEventMap ();
-	
+
+		swem.onStart += delegate() {
+			Debug.Log("i am clicked!");
+			handle_.clicked();
+		};
+
 		swem.addAction ("untouched", "leave");
 		swem.addAction ("unclicked", "touched");
 		return swem;
@@ -49,6 +78,7 @@ public class TouchUI : MonoBehaviour {
 			updatePosition(_camera.ScreenToViewportPoint(gesture.position));
 
 		};
+
 		handle_ = this._touchKey;
 		_tracked.PadClicked += delegate(object sender, ClickedEventArgs e) {
 			fsm_.post ("clicked");
@@ -73,7 +103,6 @@ public class TouchUI : MonoBehaviour {
 
 	private VRControllerState_t controllerState_;
 	private void updatePosition(Vector2 pad){
-
 		var pos = handle_.pad2pos (pad);
 		var position = this.transform.localPosition;
 		position.x = pos.x;
@@ -83,31 +112,29 @@ public class TouchUI : MonoBehaviour {
 	void FixedUpdate(){
 		
 		var system = OpenVR.System;
-		if (handle_ != null && system != null && system.GetControllerState(3, ref controllerState_))
-		{
-
+		if (handle_ != null && system != null && system.GetControllerState(1, ref controllerState_)){
 			updatePosition(new Vector2((controllerState_.rAxis0.x +1f)/2, (controllerState_.rAxis0.y+1f)/2));
-		
 		}
 	}
 	void Update () {
 
-		if (Input.GetKeyDown (KeyCode.Space)) {
+		if (Input.GetKeyDown (KeyCode.Z)) {
 
 			fsm_.post ("clicked");
 		}
 
-		if (Input.GetKeyUp (KeyCode.Space)) {
+		if (Input.GetKeyUp (KeyCode.Z)) {
 
+			Debug.Log("i going unclicked!");
 			fsm_.post ("unclicked");
 		}
 
-		if (Input.GetKeyDown (KeyCode.LeftCommand)) {
+		if (Input.GetKeyDown (KeyCode.LeftControl)) {
 
 			fsm_.post ("touched");
 		}
 
-		if (Input.GetKeyUp (KeyCode.LeftCommand)) {
+		if (Input.GetKeyUp (KeyCode.LeftAlt)) {
 
 			fsm_.post ("untouched");
 		}

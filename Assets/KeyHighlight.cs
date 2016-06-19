@@ -21,19 +21,28 @@ public class KeyHighlight : MonoBehaviour{
 
 	}
 	public void fOver(Key key){
-		this._text.text = key.getText ().text;
-		this.transform.position = key.gameObject.transform.position;
-		this._transform.sizeDelta  = key.GetComponent<RectTransform> ().sizeDelta;
+		if (key != null) {
+			this._text.text = key.getText ().text;
+			this.transform.position = key.gameObject.transform.position;
+			this._transform.sizeDelta = key.GetComponent<RectTransform> ().sizeDelta;
+		}
 		this.gameObject.SetActive (true);
 
 	}
 	public void fDown(Key key){
-		key.getImage().sprite = _down;
+		if (key) {
+			key.getImage ().sprite = _down;
+		}
+		this.gameObject.SetActive (false);
+	}
+	public void normal(){
+
 		this.gameObject.SetActive (false);
 	}
 	public void fNormal(Key key){
-
-		key.getImage().sprite = _normal;
+		if (key) {
+			key.getImage ().sprite = _normal;
+		}
 		this.gameObject.SetActive (false);
 	}
 }
