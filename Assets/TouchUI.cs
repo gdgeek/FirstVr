@@ -21,19 +21,6 @@ public class TouchUI : MonoBehaviour {
 		StateWithEventMap swem = new StateWithEventMap ();
 
 
-		StateWithEventMap state = new StateWithEventMap ();
-		TaskState.Create (delegate {
-			Task task = new Task();
-			task.isOver = delegate() {
-				return moveFire_;
-			};
-			return new Task();
-		}, _fsm, delegate {
-
-
-			return "move";
-		});
-
 
 
 

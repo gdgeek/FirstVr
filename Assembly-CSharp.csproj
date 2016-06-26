@@ -344,6 +344,7 @@
      <Compile Include="Assets\TouchUI.cs" />
      <Compile Include="Assets\Trigger.cs" />
      <Compile Include="Assets\VRCtrl.cs" />
+     <Compile Include="Assets\VRUI.cs" />
      <None Include="Assets\Standard Assets\Effects\GlassRefraction\Shaders\GlassStainedBumpDistort.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\BlendOneOne.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\NoiseEffectShaderRGB.shader" />

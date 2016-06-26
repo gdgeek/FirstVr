@@ -17,9 +17,7 @@ public class Palette : MonoBehaviour {
 			_palette.sprite = _colorChange;
 			_change.sprite = _colorChange;
 		};
-		swem.onOver += delegate() {
-			
-		};
+	
 		return swem;
 	}
 
@@ -30,9 +28,7 @@ public class Palette : MonoBehaviour {
 			_palette.sprite = _grayPalette;
 			_change.sprite = _grayChange;
 		};
-		swem.onOver += delegate() {
 
-		};
 		return swem;
 	}
 	// Use this for initialization
@@ -42,8 +38,5 @@ public class Palette : MonoBehaviour {
 		//	gray
 	}
 	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+
 }
