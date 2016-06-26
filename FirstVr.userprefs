@@ -1,5 +1,6 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj" RefactoringSettings.EnableRefactorings="True">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
+<<<<<<< HEAD
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets/GDGeek/Plugins/Voxel/New/Mesh/Builder/VoxelMeshBuild.cs">
     <Files>
       <File FileName="Assets/GDGeek/Media/Voxel/Shader/VoxelGlow.shader" Line="41" Column="24" />
@@ -14,6 +15,13 @@
       <File FileName="Assets/_MK/_MKGlowSystem/_Shader/_MKBase/Cutout/MK_Cutout-Diffuse.shader" Line="1" Column="1" />
       <File FileName="Assets/_MK/_MKGlowSystem/_Shader/_MKBase/Illumin/MK_Illumin-DiffuseBumped.shader" Line="33" Column="20" />
       <File FileName="Assets/GDGeek/Media/Voxel/Shader/VoxelGlowRender.shader" Line="90" Column="14" />
+=======
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\TouchKey.cs">
+    <Files>
+      <File FileName="Assets\TouchUI.cs" Line="11" Column="15" />
+      <File FileName="Assets\TouchHandle.cs" Line="26" Column="3" />
+      <File FileName="Assets\TouchKey.cs" Line="25" Column="1" />
+>>>>>>> origin/master
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

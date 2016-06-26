@@ -2,6 +2,9 @@
 using System.Collections;
 using UnityEngine.UI;
 
+
+
+
 public class Key : MonoBehaviour {
 	public enum Type{
 		Letter,

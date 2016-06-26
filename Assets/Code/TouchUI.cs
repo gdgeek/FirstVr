@@ -22,6 +22,10 @@ public class TouchUI : MonoBehaviour {
 	private State getLeave(){
 		StateWithEventMap swem = new StateWithEventMap ();
 
+
+
+
+
 		swem.addAction ("touched", "touched");
 		swem.addAction ("clicked", "clicked");
 		swem.onStart += delegate() {
