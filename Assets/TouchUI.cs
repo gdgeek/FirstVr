@@ -20,6 +20,23 @@ public class TouchUI : MonoBehaviour {
 	private State getLeave(){
 		StateWithEventMap swem = new StateWithEventMap ();
 
+
+		StateWithEventMap state = new StateWithEventMap ();
+		TaskState.Create (delegate {
+			Task task = new Task();
+			task.isOver = delegate() {
+				return moveFire_;
+			};
+			return new Task();
+		}, _fsm, delegate {
+
+
+			return "move";
+		});
+
+
+
+
 		swem.addAction ("touched", "touched");
 		swem.addAction ("clicked", "clicked");
 		swem.onStart += delegate() {

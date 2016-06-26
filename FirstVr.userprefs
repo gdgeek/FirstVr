@@ -1,16 +1,10 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj" RefactoringSettings.EnableRefactorings="True">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="..\place\Assets\PQAssets\Query-Chan-SD\Scripts\GUIController\GUIControllerSD.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\TouchKey.cs">
     <Files>
-      <File FileName="Assets\SteamVR\Scripts\SteamVR_Utils.cs" Line="1" Column="1" />
-      <File FileName="Assets\Barrier.cs" Line="1" Column="1" />
-      <File FileName="Assets\Bar.cs" Line="1" Column="1" />
-      <File FileName="Assets\Cube.cs" Line="1" Column="1" />
-      <File FileName="Assets\GDGeek\Plugins\Voxel\View\VoxelBoom.cs" Line="1" Column="1" />
-      <File FileName="Assets\Test2.cs" Line="7" Column="1" />
-      <File FileName="Assets\KeyHighlight.cs" Line="36" Column="34" />
-      <File FileName="Assets\Keyboard.cs" Line="89" Column="35" />
-      <File FileName="..\place\Assets\PQAssets\Query-Chan-SD\Scripts\GUIController\GUIControllerSD.cs" Line="1" Column="1" />
+      <File FileName="Assets\TouchUI.cs" Line="11" Column="15" />
+      <File FileName="Assets\TouchHandle.cs" Line="26" Column="3" />
+      <File FileName="Assets\TouchKey.cs" Line="25" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
