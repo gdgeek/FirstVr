@@ -57,12 +57,11 @@ public class TouchUI : MonoBehaviour {
 	}
 
 	public void OnTriggerEnter(Collider other){
-		
+
 		handle_.touchWho (other.gameObject);
 	}
 
 	public void OnTriggerExit(Collider other){
-//		Debug.Log ("==+"+other.gameObject);
 		handle_.touchOut (other.gameObject);
 	}
 	private State getKeyboard(){
@@ -89,7 +88,7 @@ public class TouchUI : MonoBehaviour {
 
 			Debug.Log ("nnc");
 			_palette.init();
-			this.handle_ = _touchKey;
+			this.handle_ = _palette;
 		};
 		swem.onOver += delegate {
 			_palette.shutdown();

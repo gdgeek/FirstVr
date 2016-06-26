@@ -7,16 +7,15 @@ public class TouchPalette : TouchHandle {
 
 	private FSM fsm_ = new FSM ();
 	public Palette _palette = null;
-
+	private PaletteButton button_ = null;
+	private Palette palette_ = null;
 
 	private State getColor(){
 		StateWithEventMap swem = new StateWithEventMap ();
 		swem.onStart += delegate() {
 			_palette.color();
 		};
-		swem.onOver += delegate() {
-
-		};
+		swem.addAction ("button", "gray");
 		return swem;
 	}
 
@@ -24,30 +23,41 @@ public class TouchPalette : TouchHandle {
 	private State getGray(){
 		StateWithEventMap swem = new StateWithEventMap ();
 		swem.onStart += delegate() {
-
-
+			Debug.Log("gray");
 			_palette.gray();
-			//_palette.sprite = _grayPalette;
-			//_change.sprite = _grayChange;
 		};
-		swem.onOver += delegate() {
-
-		};
+		swem.addAction ("button", "color");
 		return swem;
 	}
-	// Use this for initialization
 	void Start () {
 		fsm_.addState ("color", getColor ());
+
 		fsm_.addState ("gray", getGray ());
-		//	gray
+		fsm_.init ("gray");
 	}
 
 	public override void touchWho(GameObject obj){
+		PaletteButton button = obj.GetComponent<PaletteButton> ();
+		if (button != null) {
+			button_ = button;
+		}
+		Palette palette = obj.GetComponent<Palette> ();
+		if (palette != null) {
+			palette_ = palette;
+		}
+
 		Debug.Log (obj.name);
 	}
 
 	public override void touchOut(GameObject obj){
-
+		PaletteButton button = obj.GetComponent<PaletteButton> ();
+		if (button != null) {
+			button_ = null;
+		}
+		Palette palette = obj.GetComponent<Palette> ();
+		if (palette != null) {
+			palette_ = null;
+		}
 
 	}
 
@@ -65,7 +75,13 @@ public class TouchPalette : TouchHandle {
 
 	}
 	public override void clicked(){
-		Debug.Log ("clicked");
+		Debug.Log ("clicked" + button_);
+		if (button_ != null) {
+			fsm_.post ("button");
+		} else if(palette_ != null){
+			Color c = palette_.getColor (this.gameObject.transform.position);
+			Debug.Log (c);
+		}
 
 	}
 
