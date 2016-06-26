@@ -29,6 +29,7 @@ THE SOFTWARE.
 
 using UnityEngine;
 using System.Collections;
+/*
 using Pathfinding.Serialization.JsonFx;
 namespace GDGeek{
 	public abstract class DataInfo{
@@ -43,11 +44,7 @@ namespace GDGeek{
 		public double epoch = 0;
 		
 	}
-	/*
-	public interface DataInfoLoader<T>{
-		T load (string json);
 
-	}*/
 
 	public class WebLoaderTask<T> : Task where T:DataInfo {
 		public delegate void Succeed (T info);
@@ -93,3 +90,4 @@ namespace GDGeek{
 
 	}
 }
+*/

@@ -187,7 +187,7 @@ namespace GDGeek{
 				outs+= ":" + currState_[i].name;
 			}
 			
-//			Debug.LogWarning (outs);
+			Debug.LogWarning (outs);
 
 		}
 
@@ -242,7 +242,7 @@ namespace GDGeek{
 				outs+= ":" + currState_[i].name;
 			}
 			
-//			Debug.LogWarning (outs);
+			Debug.LogWarning (outs);
 
 
 			for(int i =0; i< this.currState_.Count; ++i){

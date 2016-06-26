@@ -433,10 +433,10 @@ public abstract class Tween : IgnoreTimeScale
 	
 	
 	
-	/*
+	
 	public  static float linear(float start, float end, float value){
 		return Mathf.Lerp(start, end, value);
-	}*/
+	}
 	
 	public  static float clerp(float start, float end, float value){
 		float min = 0.0f;
@@ -663,7 +663,9 @@ public abstract class Tween : IgnoreTimeScale
 		s = period / (2 * Mathf.PI) * Mathf.Asin(0);
 		return (amplitude * Mathf.Pow(2, -10 * value) * Mathf.Sin((value * 1 - s) * (2 * Mathf.PI) / period));
     }
-	
+	public static float liner(float start, float end, float value){
+		return  start * (1f - value) + end * value;
+	}
 	/* GFX47 MOD START */
 	public  static float easeInElastic(float start, float end, float value){
 		end -= start;
@@ -806,9 +808,9 @@ public abstract class Tween : IgnoreTimeScale
 		case Method.easeInOutCirc:
 			ret  = easeInOutCirc(start, end, value);
 			break;
-		//case Method.linear:
-		//	ret  = linear(start, end, value);
-		//	break;
+		case Method.Linear:
+			ret  = linear(start, end, value);
+			break;
 		case Method.spring:
 			ret  = spring(start, end, value);
 			break;
@@ -920,9 +922,9 @@ public abstract class Tween : IgnoreTimeScale
 		case Method.easeInOutCirc:
 			ease = new EasingFunction(easeInOutCirc);
 			break;
-//		case Method.linear:
-	//		ease = new EasingFunction(linear);
-	//		break;
+		case Method.Linear:
+			ease = new EasingFunction(linear);
+			break;
 		case Method.spring:
 			ease = new EasingFunction(spring);
 			break;

@@ -4,7 +4,7 @@ using UnityEditor;
 using SevenZip.Compression.LZMA;
 using System.IO;
 using System;
-
+/*
 public class Test : Editor {
 
 	[MenuItem ("MyMenu/CompressFile")]
@@ -68,4 +68,4 @@ public class Test : Editor {
 	}
 
 
-}
+}*/
