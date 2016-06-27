@@ -212,7 +212,11 @@
      <Compile Include="Assets\GDGeek\Plugins\Voxel\New\Mesh\Mesh\VoxelMesh.cs" />
      <Compile Include="Assets\GDGeek\Plugins\WebGL\For7DGame.cs" />
      <Compile Include="Assets\GDGeek\Test\VoxelTest.cs" />
+<<<<<<< Updated upstream
      <Compile Include="Assets\PaletteButton.cs" />
+=======
+     <Compile Include="Assets\Palette.cs" />
+>>>>>>> Stashed changes
      <Compile Include="Assets\SteamVR\Extras\SteamVR_GazeTracker.cs" />
      <Compile Include="Assets\SteamVR\Extras\SteamVR_LaserPointer.cs" />
      <Compile Include="Assets\SteamVR\Extras\SteamVR_Teleporter.cs" />
