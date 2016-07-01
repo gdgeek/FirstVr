@@ -75,10 +75,12 @@ namespace GDGeek{
 				List<int> triangles = new List<int>();
 				for (int i = 0; i < this.sub.Length; ++i) {
 
-					int offset = data_.vertices.Count;
+					int offset = data_.count;//vertices.Count;
 					for (int j = 0; j < this.sub [i].draw.vertices.Count; ++j) {
-						data_.colors.Add (this.sub [i].draw.vertices [j].color);
-						data_.vertices.Add (this.sub [i].draw.vertices [j].position);
+
+						data_.addPoint (this.sub [i].draw.vertices [j].position, this.sub [i].draw.vertices [j].color);
+						//data_.colors.Add (this.sub [i].draw.vertices [j].color);
+						//data_.vertices.Add (this.sub [i].draw.vertices [j].position);
 
 					}
 
@@ -91,8 +93,10 @@ namespace GDGeek{
 
 			} else {
 				for (int i = 0; i < main.draw.vertices.Count; ++i) {
-					data_.vertices.Add (main.draw.vertices [i].position);
-					data_.colors.Add (main.draw.vertices [i].color);
+
+					data_.addPoint (main.draw.vertices [i].position, main.draw.vertices [i].color);
+				//	data_.vertices.Add (main.draw.vertices [i].position);
+					//data_.colors.Add (main.draw.vertices [i].color);
 
 				}
 				data_.triangles = main.draw.triangles;

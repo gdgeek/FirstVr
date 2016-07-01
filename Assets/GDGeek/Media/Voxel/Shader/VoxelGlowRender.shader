@@ -19,16 +19,17 @@
 			#pragma fragment frag
 			#pragma fragmentoption ARB_precision_hint_fastest
 			
-			uniform sampler2D _MKGlowTex : register (s0);
-			uniform float4 _MKGlowTex_ST;
-			uniform fixed4 _MKGlowColor;
+		//	uniform sampler2D _MKGlowTex : register (s0);
+		//	uniform float4 _MKGlowTex_ST;
+			//uniform fixed4 _MKGlowColor;
 			uniform half _MKGlowPower;
-			uniform half _MKGlowTexPower;
+		//	uniform half _MKGlowTexPower;
 			uniform float _MKGlowOffSet;
 			
 			struct Input
 			{
 				float2 texcoord : TEXCOORD0;
+				fixed3 color : COLOR;
 				float4 vertex : POSITION;
 				float3 normal : NORMAL;
 			};
@@ -37,6 +38,7 @@
 			{
 				float4 pos : SV_POSITION;
 				float2 uv : TEXCOORD0;
+				fixed3 color : COLOR;
 			};
 			
 			Output vert (Input i)
@@ -45,14 +47,20 @@
 				i.vertex.xyz += i.normal * _MKGlowOffSet;
 				o.pos = mul (UNITY_MATRIX_MVP, i.vertex);
 				o.uv = i.texcoord;
+				o.color = i.color;
 				return o;
 			}
 
 			fixed4 frag (Output i) : SV_TARGET
 			{
-				fixed4 glow = tex2D(_MKGlowTex, i.uv.xy * _MKGlowTex_ST.xy + _MKGlowTex_ST.zw);
-				glow *= (_MKGlowColor * _MKGlowPower);
-				glow.a = _MKGlowColor.a;
+
+				if(i.uv.x == 0){
+					return fixed4(0,0,0,0);	
+				}
+				fixed4 glow = fixed4(i.uv.x,i.uv.x,i.uv.x,1);//tex2D(_MKGlowTex, i.uv.xy * _MKGlowTex_ST.xy + _MKGlowTex_ST.zw);
+				glow *= (half4(i.color.r,i.color.g,i.color.b,1))*_MKGlowPower;
+
+				glow.a = 1;
 				return glow;
 			}
 			ENDCG

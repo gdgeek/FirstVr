@@ -26,7 +26,6 @@ namespace GDGeek{
 
 			#if UNITY_EDITOR
 			if(this._director._material == null){
-				Debug.Log("A");
 				this._director._material = UnityEditor.AssetDatabase.LoadAssetAtPath<Material>("Assets/GdGeek/Media/Voxel/Material/VoxelMesh.mat");
 			}
 			#endif

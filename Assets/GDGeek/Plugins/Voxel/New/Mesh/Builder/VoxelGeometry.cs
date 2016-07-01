@@ -11,21 +11,52 @@ namespace GDGeek
 		//public BoxCollider _collider = null;
 
 		[Serializable]
-		public class MeshData
+		public class MeshData : ICloneable
 		{
-			public List<Vector3> vertices = new List<Vector3> ();
+			private List<Vector3> vertices_ = new List<Vector3> ();
+			public List<Vector3> _vertices{
+				get{ 
+					return vertices_;
+				}
+
+			}
+			public int count{
+
+				get{ 
+					return vertices_.Count;
+				}
+			}
 			public List<Color> colors = new List<Color> ();
 			public List<int> triangles = new List<int> ();
 			public List<Vector2> uvs = new List<Vector2> ();
 			public Vector3 min;
 			public Vector3 max;
+			public void addPoint(Vector3 position, Color color){
+				vertices_.Add (position);
+				colors.Add (color);
+				uvs.Add (Vector2.zero);
+			}
+			public object Clone()
+			{
+				MeshData data = new MeshData();
+				this._vertices.ForEach(i => data._vertices.Add(i));
+				this.colors.ForEach(i => data.colors.Add(i));
+				this.triangles.ForEach(i => data.triangles.Add(i));
+				this.uvs.ForEach(i => data.uvs.Add(i));
+				data.min = this.min;
+				data.max = this.max;
+
+				return data;
+			}
+
+
 			public MeshData add(MeshData other){
 				min = new Vector3(Mathf.Min (min.x, other.min.x),Mathf.Min (min.y, other.min.y),Mathf.Min (min.z, other.min.z));
 				max = new Vector3(Mathf.Min (max.x, other.max.x),Mathf.Min (max.y, other.max.y),Mathf.Min (max.z, other.max.z));
 
-				int offset = vertices.Count;
-				for (int i = 0; i < other.vertices.Count; ++i) {
-					vertices.Add (other.vertices [i]);
+				int offset = _vertices.Count;
+				for (int i = 0; i < other._vertices.Count; ++i) {
+					_vertices.Add (other._vertices [i]);
 					colors.Add (other.colors [i]);
 				}
 
@@ -37,24 +68,26 @@ namespace GDGeek
 
 		}
 		private static Mesh CreateMesh(MeshData data){
+
 			Mesh m = new Mesh();
 			m.name = "ScriptedMesh";
-			m.SetVertices (data.vertices);
+			m.SetVertices (data._vertices);
 			m.SetColors (data.colors);
-			for (int i = 0; i < data.vertices.Count; ++i) {
-				if (i > data.vertices.Count / 2) {
-					data.uvs.Add (new Vector2 (1, 1));
+		
+			/*for (int i = 0; i < data.colors.Count; ++i) {
+				if(data.colors [i].g <0.5f){
+					data.uvs.Add (new Vector2 (1, 0));
 				} else {
 					data.uvs.Add (new Vector2 (0, 0));
 				}
-			}
+			}*/
 			m.SetUVs (0, data.uvs);
 			m.SetTriangles(data.triangles, 0);
 			m.RecalculateNormals();
 			return m;
 		}
 
-		public static MeshFilter CrateMeshFilter(MeshData data, string name, Material material){
+		private static MeshFilter CrateMeshFilter(MeshData data, string name, Material material){
 			GameObject go = new GameObject(name);
 			MeshFilter meshFilter = go.AddComponent<MeshFilter>();
 			meshFilter.mesh = CreateMesh(data);
@@ -63,7 +96,7 @@ namespace GDGeek
 			return meshFilter;
 		}
 
-		public static VoxelMesh Draw(string name, MeshData data, GameObject gameObject, Material material){
+		public static VoxelMesh _Draw(string name, MeshData data, GameObject gameObject, Material material){
 
 
 

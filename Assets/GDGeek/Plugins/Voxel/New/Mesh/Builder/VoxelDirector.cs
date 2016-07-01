@@ -49,13 +49,22 @@ namespace GDGeek{
 				if(this.gameObject.GetComponent<VoxelMesh>() == null){
 					this.gameObject.AddComponent<VoxelMesh>();
 				}
-				VoxelMesh mesh = VoxelGeometry.Draw (name, data, this.gameObject, this._material);
+				VoxelMesh mesh = this.draw(name, data, this.gameObject, this._material);//VoxelGeometry.Draw ();
 				mesh.vs = vs;
 				cb(mesh);
 			});
 			return tp;
 		}
+		public VoxelMesh draw(string name, VoxelGeometry.MeshData data, GameObject gameObject, Material material){
 
+			VoxelFilter vf = this.gameObject.GetComponent<VoxelFilter> ();
+			if (vf != null) {
+				return VoxelGeometry._Draw (name, vf.filter(data), gameObject, material);
+			} else {
+				return VoxelGeometry._Draw (name, data, gameObject, material);
+			}
+
+		}
 		public static VoxelGeometry.MeshData LoadFromFile(string key){
 			
 
@@ -86,7 +95,7 @@ namespace GDGeek{
 			if (obj == null) {
 				obj = this.gameObject;
 			}
-			VoxelMesh mesh = VoxelGeometry.Draw (name, data, obj, this._material);
+			VoxelMesh mesh = this.draw (name, data, obj, this._material);
 			mesh.vs = vs;
 			return mesh;
 		
@@ -122,7 +131,7 @@ namespace GDGeek{
 				obj = this.gameObject;
 			}
 			VoxelGeometry.MeshData data = BuildMeshData(vs);
-			VoxelMesh mesh = VoxelGeometry.Draw ("Mesh", data, obj, this._material);
+			VoxelMesh mesh =  this.draw ("Mesh", data, obj, this._material);
 			mesh.vs = vs;
 			return mesh;
 

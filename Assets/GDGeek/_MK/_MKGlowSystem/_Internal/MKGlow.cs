@@ -311,7 +311,7 @@ namespace MKGlowSystem
             if (!m_CompositeShader)
                 m_CompositeShader = Shader.Find("Hidden/MKGlowCompose");
 
-			if (!m_GlowRenderShader)
+			//if (!m_GlowRenderShader)
 				m_GlowRenderShader = Shader.Find("Voxel/GlowRender");
                 //m_GlowRenderShader = Shader.Find("Hidden/MKGlowRender");
 			
