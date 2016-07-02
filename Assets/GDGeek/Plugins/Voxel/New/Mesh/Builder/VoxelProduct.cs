@@ -63,7 +63,6 @@ namespace GDGeek{
 
 		private VoxelGeometry.MeshData data_ = null;
 		public VoxelGeometry.MeshData getMeshData(){
-			Debug.Log ("!!!!!");
 			
 			if (data_ == null) {
 				data_ = new VoxelGeometry.MeshData ();
@@ -71,7 +70,7 @@ namespace GDGeek{
 				
 			data_.max = this.max;
 			data_.min = this.min;
-			Debug.Log ("!!!!!!");
+			//Debug.Log ("!!!!!!");
 			if (this.sub != null) {
 
 			
