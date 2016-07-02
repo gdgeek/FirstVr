@@ -253,6 +253,7 @@
      <Compile Include="Assets\SteamVR\Scripts\SteamVR_Utils.cs" />
      <Compile Include="Assets\VRButton.cs" />
      <Compile Include="Assets\VRUI.cs" />
+     <Compile Include="Assets\VoxelMapCareater.cs" />
      <None Include="Assets\Standard Assets\Effects\GlassRefraction\Shaders\GlassStainedBumpDistort.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\BlendOneOne.shader" />
      <None Include="Assets\GDGeek\_MK\_MKGlowSystem\_Shader\_MKBase\Mobile\MK_Mobile-Diffuse.shader" />

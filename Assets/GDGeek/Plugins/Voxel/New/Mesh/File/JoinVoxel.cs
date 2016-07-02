@@ -42,7 +42,7 @@ namespace GDGeek{
 				data.pos.y = item.Key.y;
 				data.pos.z = item.Key.z;
 
-				data.id = i;
+//				data.id = i;
 				datas.Add (data);
 				++i;
 			}

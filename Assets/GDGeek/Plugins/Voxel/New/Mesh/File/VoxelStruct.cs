@@ -91,6 +91,7 @@ namespace GDGeek{
 					palette.Add (this.datas[i].color);
 
 					VectorInt3 pos = this.datas [i].pos;
+					pos -= min;
 					this.datas [i].pos = pos - min;
 
 				}

@@ -29,7 +29,7 @@ namespace GDGeek
 
 			handler.position = new VectorInt3(data.pos.x, data.pos.y, data.pos.z);
 			handler.color = data.color;
-			handler.id = data.id;
+//			handler.id = data.id;
 
 			return handler;
 
