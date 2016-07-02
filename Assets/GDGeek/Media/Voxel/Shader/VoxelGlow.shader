@@ -6,14 +6,8 @@ Shader "Voxel/Glow" {
 Properties {
 
 
-	//_Color ("Main Color", Color) = (1,1,1,1)
-	//_MainTex ("Base (RGB) Trans (A)", 2D) = "white" {}
-	//_Cutoff ("Alpha cutoff", Range(0,1)) = 0.5
-	//_MKGlowColor ("Glow Color", Color) = (1,1,1,1)
+	_MainTex ("Base (RGB) Trans (A)", 2D) = "white" {}
 	_MKGlowPower ("Glow Power", Range(0.0,1.0)) = 1.0
-	//_MKGlowTex ("Glow Texture", 2D) = "black" {}
-	//_MKGlowTexColor ("Glow Texture Color", Color) = (1,1,1,1)
-	//_MKGlowTexStrength ("Glow Texture Strength ", Range(0.0,1.0)) = 1.0
 	_MKGlowOffSet ("Glow Width ", Range(0.0,0.0755)) = 0.0
 }
 SubShader {
@@ -39,8 +33,10 @@ void surf (Input IN, inout SurfaceOutput o) {
 	//float2 uv= IN.uv_MainTex.x;
 	//float ab = uv.x;
 //	float a = ab;
+
+
 	o.Albedo = IN.color ;// *  a;
-	o.Emission = IN.color * IN.uv_MainTex.x *_MKGlowPower;
+	o.Emission = IN.color * IN.uv_MainTex.x * _MKGlowPower;
 	o.Alpha = 1;
 
 	//o.	 = UnpackNormal(tex2D(_BumpMap, IN.uv_MainTex));

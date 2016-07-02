@@ -13,18 +13,16 @@ namespace GDGeek
 		[Serializable]
 		public class MeshData : ICloneable
 		{
-			public List<Vector3> vertices = new List<Vector3> ();
-		
-		
-			public List<Color> colors = new List<Color> ();
-			public List<int> triangles = new List<int> ();
-			public List<Vector2> uvs = new List<Vector2> ();
+			public List<Vector3> vertices = new List<Vector3> ();//顶点信息
+			public List<Color> colors = new List<Color> ();//颜色信息
+			public List<int> triangles = new List<int> ();//三角片
+			public List<Vector2> uvs = new List<Vector2> ();//uvs
+
 			public Vector3 min;
 			public Vector3 max;
+
 			public void addPoint(Vector3 position, Color color){
-//				Debug.Log ("11ss");
 				vertices.Add (position);
-//				Debug.Log (vertices.Count);
 				colors.Add (color);
 				uvs.Add (Vector2.zero);
 			}
@@ -64,18 +62,9 @@ namespace GDGeek
 
 			Mesh m = new Mesh();
 			m.name = "ScriptedMesh";
-//			Debug.Log (data.count);
 			m.SetVertices (data.vertices);
-//			Debug.Log (data.colors_.Count);
 			m.SetColors (data.colors);
 		
-			/*for (int i = 0; i < data.colors.Count; ++i) {
-				if(data.colors [i].g <0.5f){
-					data.uvs.Add (new Vector2 (1, 0));
-				} else {
-					data.uvs.Add (new Vector2 (0, 0));
-				}
-			}*/
 			m.SetUVs (0, data.uvs);
 			m.SetTriangles(data.triangles, 0);
 			m.RecalculateNormals();

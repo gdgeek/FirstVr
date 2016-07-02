@@ -28,7 +28,6 @@ public class Palette : MonoBehaviour {
 
 	public void init(){
 		this.gameObject.SetActive (true);
-
 	}
 	public Color getColor(Vector3 point){
 		_pen.transform.position = point;
