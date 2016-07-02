@@ -5,9 +5,9 @@ using System.IO;
 
 namespace GDGeek{
 	[ExecuteInEditMode]
-	public class VoxelMapCareater : MonoBehaviour {
-		public Sprite _sprite = null;
-		public bool _building = true;
+	public class VoxelMapItem : MonoBehaviour {
+		//public Sprite _sprite = null;
+		//public bool _building = true;
 		public VoxelStruct _vs = null;
 		public VoxelDirector _director = null;
 
@@ -36,7 +36,7 @@ namespace GDGeek{
 
 			VoxelData data;
 			VoxelStruct vs = new VoxelStruct ();
-
+			vs.datas.Add (new VoxelData (new VectorInt3(1,1,1), Color.blue));
 
 //			vs.datas.Add ();
 //			vs.arrange ();
@@ -45,19 +45,11 @@ namespace GDGeek{
 		}
 
 		// Update is called once per frame
-		void Update () {
-			if (_building == true && _sprite != null) {
+		public void build (Color[] hi) {
+			initDirector ();
+			_vs = ReadFromArray (hi);
+			_director.build (_vs);
 
-				//initLoader();
-				initDirector();
-
-				var highs = _sprite.texture.GetPixels (0, 0, 64, 64);
-				_vs = ReadFromArray (highs);
-
-				_director.build (_vs);
-
-				_building = false;	
-			}
 		}
 	}
 

@@ -25,7 +25,7 @@ namespace GDGeek{
 			return tl;
 		}
 		public Task buildTask(string name, VoxelStruct vs, GeometryResult cb){
-			
+
 
 			VoxelGeometry.MeshData data = null;
 			TaskPack tp = new TaskPack(delegate(){
@@ -35,7 +35,7 @@ namespace GDGeek{
 				if(data == null){
 					return buildData(vs, delegate(VoxelGeometry.MeshData result) {
 						data = result;
-//						Debug.Log(md5);
+						//						Debug.Log(md5);
 
 						this.SaveToFile (GetKey(md5), data);
 					});
@@ -59,15 +59,15 @@ namespace GDGeek{
 
 			//VoxelFilter vf = this.gameObject.GetComponent<VoxelFilter> ();
 			//if (vf != null) {
-	//			return VoxelGeometry._Draw (name, vf.filter(data), gameObject, material);
+			//			return VoxelGeometry._Draw (name, vf.filter(data), gameObject, material);
 			//} else {
 			//Debug.Log(data.count);
-				return VoxelGeometry._Draw (name, data, gameObject, material);
-	///		}
+			return VoxelGeometry._Draw (name, data, gameObject, material);
+			///		}
 
 		}
 		public static VoxelGeometry.MeshData LoadFromFile(string key){
-			
+
 
 			VoxelGeometry.MeshData data = null;
 			if (GK7Zip.FileHas (key)) {
@@ -81,8 +81,8 @@ namespace GDGeek{
 			return "vs7z_" + md5;;
 		}
 		public static void SaveToFile(string key, VoxelGeometry.MeshData data){
-			
-		
+
+
 			GK7Zip.SetToFile (key, JsonUtility.ToJson(data));
 			/*var json = JsonUtility.ToJson(data);
 			var zip = GK7Zip.Compression (json);
@@ -99,7 +99,7 @@ namespace GDGeek{
 			VoxelMesh mesh = this.draw (name, data, obj, this._material);
 			mesh.vs = vs;
 			return mesh;
-		
+
 		}
 		public static VoxelGeometry.MeshData CreateMeshData(VoxelStruct vs){
 			VoxelProduct product = new VoxelProduct();
@@ -114,7 +114,7 @@ namespace GDGeek{
 			return data;
 		}
 		public static VoxelGeometry.MeshData BuildMeshData(VoxelStruct vs){
-			
+
 			vs.arrange ();
 			string md5 = VoxelFormater.GetMd5 (vs);
 			VoxelGeometry.MeshData data = LoadFromFile (GetKey(md5));
@@ -133,7 +133,7 @@ namespace GDGeek{
 				obj = this.gameObject;
 			}
 			VoxelGeometry.MeshData data = BuildMeshData(vs);
-//			/Debug.Log (data.count);
+			//			/Debug.Log (data.count);
 			VoxelMesh mesh =  this.draw ("Mesh", data, obj, this._material);
 			mesh.vs = vs;
 			return mesh;

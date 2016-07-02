@@ -4,7 +4,13 @@ using System;
 
 namespace GDGeek{
 	[Serializable]
-	public class VoxelData{
+	public struct VoxelData{
+		
+		public VoxelData(VectorInt3 p, Color c){
+			pos = p;
+			color = c;
+
+		}
 		public VectorInt3 pos;
 		public Color color;
 		//public int id = 0;
