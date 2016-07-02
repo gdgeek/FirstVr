@@ -16,35 +16,23 @@ namespace GDGeek{
 
 			var go = new GameObject();
 			VoxelMapItem item = null;
-
 			item = go.GetComponent<VoxelMapItem>();
-
 			if(item == null){
 				item = go.AddComponent<VoxelMapItem>();
 			}
 			return item;
 		}
 
-		/*
-		public static VoxelStruct ReadFromArray(Color[] high){
-
-			VoxelData data;
-			VoxelStruct vs = new VoxelStruct ();
-			vs.datas.Add (new VoxelData (new VectorInt3(1,1,1), Color.blue));
-			return vs;
-
-		}
-*/
+	
 		// Update is called once per frame
 		void Update () {
 			if (_building == true && _sprite != null) {
 
-				var item  = createItem();
-				//item._building = true;
+				VoxelMapItem item  = createItem();
 				item.gameObject.name = "item0";
 				item.gameObject.transform.parent = this.transform;
-				var highs = _sprite.texture.GetPixels (0, 0, 64, 64);
-				item.build (highs);
+				Color[] highs = _sprite.texture.GetPixels (0, 0, 64, 64);
+				item.build (64, 64, highs);
 				_building = false;	
 			}
 		}
