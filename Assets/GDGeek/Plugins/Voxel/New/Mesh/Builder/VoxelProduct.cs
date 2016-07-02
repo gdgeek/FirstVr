@@ -63,21 +63,26 @@ namespace GDGeek{
 
 		private VoxelGeometry.MeshData data_ = null;
 		public VoxelGeometry.MeshData getMeshData(){
+			Debug.Log ("!!!!!");
+			
 			if (data_ == null) {
 				data_ = new VoxelGeometry.MeshData ();
 			}
 				
 			data_.max = this.max;
 			data_.min = this.min;
+			Debug.Log ("!!!!!!");
 			if (this.sub != null) {
 
-
+			
 				List<int> triangles = new List<int>();
 				for (int i = 0; i < this.sub.Length; ++i) {
 
-					int offset = data_.count;//vertices.Count;
-					for (int j = 0; j < this.sub [i].draw.vertices.Count; ++j) {
+					int offset = data_.vertices.Count;
 
+
+					for (int j = 0; j < this.sub [i].draw.vertices.Count; ++j) {
+						
 						data_.addPoint (this.sub [i].draw.vertices [j].position, this.sub [i].draw.vertices [j].color);
 						//data_.colors.Add (this.sub [i].draw.vertices [j].color);
 						//data_.vertices.Add (this.sub [i].draw.vertices [j].position);

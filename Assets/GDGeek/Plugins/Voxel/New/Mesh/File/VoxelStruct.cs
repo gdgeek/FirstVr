@@ -89,10 +89,11 @@ namespace GDGeek{
 				max = max - min;
 				for (int i = 0; i < this.datas.Count; ++i) {
 					palette.Add (this.datas[i].color);
-
-					VectorInt3 pos = this.datas [i].pos;
-					pos -= min;
-					this.datas [i].pos = pos - min;
+					var data = this.datas [i];
+					data.pos -= min;
+					//VectorInt3 pos = this.datas [i].pos;
+				//	pos -= min;
+					this.datas [i]= data;//.pos = pos - min;
 
 				}
 				min = new VectorInt3 (0, 0, 0);

@@ -1,28 +1,64 @@
 ﻿using UnityEngine;
 using System.Collections;
-using UnityEngine.UI;
-using GDGeek;
+using System.IO;
 
 
-public class VoxelMapCareater : MonoBehaviour {
-	public Sprite _sprite;
-	public int _layer = 5;
-	public Color _soil;
-	public VoxelStruct _vs = null;
+namespace GDGeek{
+	[ExecuteInEditMode]
+	public class VoxelMapCareater : MonoBehaviour {
+		public Sprite _sprite = null;
+		public bool _building = true;
+		public VoxelStruct _vs = null;
+		public VoxelDirector _director = null;
 
-	//public Image _image;
-	// Use this for initialization
-	void Start () {
-		Color[] colors = _sprite.texture.GetPixels (0, 0, 128, 128);
-		for (int i = 0; i < colors.Length; ++i) {
-			Debug.Log (colors [i].r);
+
+
+		void initDirector ()
+		{
+			if(_director == null){
+				this._director = this.gameObject.GetComponent<VoxelDirector>();
+			}
+			if(_director == null){
+				this._director = this.gameObject.AddComponent<VoxelDirector>();
+
+			}
+
+
+			#if UNITY_EDITOR
+			if(this._director._material == null){
+				this._director._material = UnityEditor.AssetDatabase.LoadAssetAtPath<Material>("Assets/GdGeek/Media/Voxel/Material/VoxelMesh.mat");
+			}
+			#endif
+		}
+
+
+		public static VoxelStruct ReadFromArray(Color[] high){
+
+			VoxelData data;
+			VoxelStruct vs = new VoxelStruct ();
+
+
+//			vs.datas.Add ();
+//			vs.arrange ();
+			return vs;
 
 		}
-		//_vs.
+
+		// Update is called once per frame
+		void Update () {
+			if (_building == true && _sprite != null) {
+
+				//initLoader();
+				initDirector();
+
+				var highs = _sprite.texture.GetPixels (0, 0, 64, 64);
+				_vs = ReadFromArray (highs);
+
+				_director.build (_vs);
+
+				_building = false;	
+			}
+		}
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+
 }

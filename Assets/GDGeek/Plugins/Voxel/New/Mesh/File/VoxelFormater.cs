@@ -142,7 +142,6 @@ namespace GDGeek{
 		
 		}
 
-
 		public static VoxelStruct ReadFromMagicaVoxel(System.IO.BinaryReader br){
 
 

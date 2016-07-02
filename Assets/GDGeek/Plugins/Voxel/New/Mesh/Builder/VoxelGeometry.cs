@@ -13,33 +13,26 @@ namespace GDGeek
 		[Serializable]
 		public class MeshData : ICloneable
 		{
-			private List<Vector3> vertices_ = new List<Vector3> ();
-			public List<Vector3> _vertices{
-				get{ 
-					return vertices_;
-				}
-
-			}
-			public int count{
-
-				get{ 
-					return vertices_.Count;
-				}
-			}
+			public List<Vector3> vertices = new List<Vector3> ();
+		
+		
 			public List<Color> colors = new List<Color> ();
 			public List<int> triangles = new List<int> ();
 			public List<Vector2> uvs = new List<Vector2> ();
 			public Vector3 min;
 			public Vector3 max;
 			public void addPoint(Vector3 position, Color color){
-				vertices_.Add (position);
+//				Debug.Log ("11ss");
+				vertices.Add (position);
+//				Debug.Log (vertices.Count);
 				colors.Add (color);
 				uvs.Add (Vector2.zero);
 			}
 			public object Clone()
 			{
 				MeshData data = new MeshData();
-				this._vertices.ForEach(i => data._vertices.Add(i));
+				this.vertices.ForEach(i => data.vertices.Add(i));
+
 				this.colors.ForEach(i => data.colors.Add(i));
 				this.triangles.ForEach(i => data.triangles.Add(i));
 				this.uvs.ForEach(i => data.uvs.Add(i));
@@ -54,9 +47,9 @@ namespace GDGeek
 				min = new Vector3(Mathf.Min (min.x, other.min.x),Mathf.Min (min.y, other.min.y),Mathf.Min (min.z, other.min.z));
 				max = new Vector3(Mathf.Min (max.x, other.max.x),Mathf.Min (max.y, other.max.y),Mathf.Min (max.z, other.max.z));
 
-				int offset = _vertices.Count;
-				for (int i = 0; i < other._vertices.Count; ++i) {
-					_vertices.Add (other._vertices [i]);
+				int offset = vertices.Count;
+				for (int i = 0; i < other.vertices.Count; ++i) {
+					vertices.Add (other.vertices [i]);
 					colors.Add (other.colors [i]);
 				}
 
@@ -71,7 +64,9 @@ namespace GDGeek
 
 			Mesh m = new Mesh();
 			m.name = "ScriptedMesh";
-			m.SetVertices (data._vertices);
+//			Debug.Log (data.count);
+			m.SetVertices (data.vertices);
+//			Debug.Log (data.colors_.Count);
 			m.SetColors (data.colors);
 		
 			/*for (int i = 0; i < data.colors.Count; ++i) {

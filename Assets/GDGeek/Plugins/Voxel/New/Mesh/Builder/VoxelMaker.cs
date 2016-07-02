@@ -42,7 +42,7 @@ namespace GDGeek{
 					Stream sw = new MemoryStream(_voxFile.bytes);
 					System.IO.BinaryReader br = new System.IO.BinaryReader (sw); 
 					_vs = VoxelFormater.ReadFromMagicaVoxel (br);
-				
+					Debug.Log (_vs.datas.Count);
 					_director.build (_vs);
 				}
 				_building = false;	
