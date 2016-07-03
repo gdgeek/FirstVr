@@ -78,7 +78,10 @@ public class TouchUI : MonoBehaviour {
 			_touchKey.shutdown();
 		};
 
-		swem.addAction ("unmenu", "palette");
+		swem.addAction ("unmenu", delegate {
+			Debug.Log("!!!!!menu");
+			return "palette";
+		});
 		return swem;
 	}
 
@@ -109,8 +112,10 @@ public class TouchUI : MonoBehaviour {
 		swem.addAction ("unclicked", "touched");
 		return swem;
 	}
+
 	// Use this for initialization
 	void Start () {
+		
 		EasyTouch.On_TouchDown += delegate(Gesture gesture) {
 			var pos = _camera.ScreenToViewportPoint(gesture.position);
 			updatePosition(_camera.ScreenToViewportPoint(gesture.position));
@@ -132,12 +137,12 @@ public class TouchUI : MonoBehaviour {
 			fsm_.post ("unclicked");
 		};
 		_tracked.MenuButtonClicked += delegate(object sender, ClickedEventArgs e) {
-			fsm_.post ("menu");
+			fsm2_.post ("menu");
 		};
 
 
 		_tracked.MenuButtonUnclicked += delegate(object sender, ClickedEventArgs e) {
-			fsm_.post ("unmenu");
+			fsm2_.post ("unmenu");
 		};
 		fsm_.addState ("leave", getLeave ());
 		fsm_.addState ("touched", getTouch ());
@@ -161,12 +166,13 @@ public class TouchUI : MonoBehaviour {
 	void FixedUpdate(){
 		
 		var system = OpenVR.System;
-		if (handle_ != null && system != null && system.GetControllerState (1, ref controllerState_)) {
+		if (handle_ != null && system != null && system.GetControllerState (_tracked.controllerIndex, ref controllerState_)) {
 			updatePosition (new Vector2 ((controllerState_.rAxis0.x + 1f) / 2, (controllerState_.rAxis0.y + 1f) / 2));
 		}
 	}
 	void Update () {
-		
+		//var f = SteamVR_Controller.GetDeviceIndex (SteamVR_Controller.DeviceRelation.FarthestRight);
+		//Debug.Log (f);
 		if (Input.GetKeyDown (KeyCode.Z)) {
 
 			fsm_.post ("clicked");
@@ -188,11 +194,11 @@ public class TouchUI : MonoBehaviour {
 			fsm_.post ("untouched");
 		}
 		if (Input.GetKey (KeyCode.Tab)) {
-
-			fsm_.post ("menu");
+			Debug.Log ("@@@@");
+			fsm2_.post ("menu");
 		}
 		if (Input.GetKeyUp (KeyCode.Tab)) {
-			Debug.Log ("nn");
+
 			fsm2_.post ("unmenu");
 		}
 

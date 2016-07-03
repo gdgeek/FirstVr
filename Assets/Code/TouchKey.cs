@@ -32,8 +32,11 @@ public class TouchKey : TouchHandle {
 			if(clicked_ != null){
 				_hightlight.fNormal (clicked_);
 			}
-			
+
+			_keyboard.gameObject.SetActive(false);
+			_keyboard._sample.gameObject.SetActive(true);
 		};
+
 		return swem;
 	}
 
@@ -44,6 +47,10 @@ public class TouchKey : TouchHandle {
 		swem.addAction ("clicked", "clicked");
 
 		swem.onStart += delegate() {
+
+
+			_keyboard.gameObject.SetActive(true);
+			_keyboard._sample.gameObject.SetActive(false);
 			Debug.Log("touched");
 			if(key_ != null){
 				_hightlight.fOver (key_);

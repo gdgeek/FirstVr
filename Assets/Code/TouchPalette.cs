@@ -31,7 +31,6 @@ public class TouchPalette : TouchHandle {
 	}
 	void Start () {
 		fsm_.addState ("color", getColor ());
-
 		fsm_.addState ("gray", getGray ());
 		fsm_.init ("gray");
 	}
@@ -83,6 +82,7 @@ public class TouchPalette : TouchHandle {
 			fsm_.post ("button");
 		} else if(palette_ != null){
 			Color c = palette_.getColor (this.gameObject.transform.position);
+			palette_._color.color = c;
 			Debug.Log (c);
 		}
 

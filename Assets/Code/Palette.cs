@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class Palette : MonoBehaviour {
 	public Image _palette;
 	public Image _change;
+	public Image _color = null;
+	public Image _sample = null;
 	public Sprite _colorPalette;
 	public Sprite _colorChange;
 	public Sprite _grayPalette;

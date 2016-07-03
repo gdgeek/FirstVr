@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class Keyboard : MonoBehaviour {
 	private FSM fsm_ = new FSM ();
 	private Key[] keys_ = null;
-
+	public Image _sample;
 	public Rect _rect;
 	private Key[] getKeys(){
 		if (keys_ == null) {
@@ -31,7 +31,7 @@ public class Keyboard : MonoBehaviour {
 
 
 	public void init(){
-		this.gameObject.SetActive (true);
+		//this.gameObject.SetActive (true);
 
 	}
 
