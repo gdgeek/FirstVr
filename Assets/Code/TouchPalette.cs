@@ -30,7 +30,7 @@ public class TouchPalette : TouchHandle {
 		return swem;
 	}
 	void Start () {
-		fsm_.addState ("color", getColor ());
+		fsm_.addState ("color", getColor ());	
 		fsm_.addState ("gray", getGray ());
 		fsm_.init ("gray");
 	}

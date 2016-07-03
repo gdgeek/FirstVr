@@ -1,14 +1,13 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/GDGeek/Plugins/Voxel/New/Mesh/Builder/VoxelGeometry.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\SteamVR\Scripts\SteamVR_Controller.cs">
     <Files>
-      <File FileName="Assets/GDGeek/Media/Voxel/Shader/VoxelGlow.shader" Line="17" Column="15" />
-      <File FileName="Assets/GDGeek/Media/Voxel/Shader/VoxelGlowRender.shader" Line="27" Column="31" />
-      <File FileName="Assets/GDGeek/Plugins/Voxel/New/Mesh/Builder/VoxelMaker.cs" Line="27" Column="20" />
-      <File FileName="Assets/GDGeek/Plugins/Voxel/New/Mesh/Builder/VoxelDirector.cs" Line="62" Column="51" />
-      <File FileName="Assets/GDGeek/Plugins/Voxel/New/Effect/VoxelFilterGlow.cs" Line="6" Column="69" />
-      <File FileName="Assets/GDGeek/Plugins/Voxel/New/Mesh/Builder/VoxelGeometry.cs" Line="34" Column="24" />
-      <File FileName="Assets/GDGeek/Plugins/Voxel/New/Mesh/Builder/VoxelProduct.cs" Line="64" Column="27" />
+      <File FileName="Assets\Code\Keyboard.cs" Line="34" Column="5" />
+      <File FileName="Assets\Code\TouchKey.cs" Line="75" Column="15" />
+      <File FileName="Assets\Code\Palette.cs" Line="32" Column="3" />
+      <File FileName="Assets\Code\TouchPalette.cs" Line="13" Column="27" />
+      <File FileName="Assets\Code\TouchUI.cs" Line="171" Column="4" />
+      <File FileName="Assets\SteamVR\Scripts\SteamVR_Controller.cs" Line="157" Column="22" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
