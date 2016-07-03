@@ -67,7 +67,10 @@ public class TouchPalette : TouchHandle {
 	}
 
 	public override Vector2 pad2pos(Vector2 pad){
-		return new Vector2(pad.x * 110f, pad.y * 70f);
+		Vector2 p = pad - new Vector2 (0.5f, 0.5f);
+		SphereCollider sc = _palette.gameObject.GetComponent<SphereCollider> ();
+		var l = sc.radius * 2f;
+		return new Vector2(p.x * l, p.y * l);
 	}
 
 	public override void touched(){

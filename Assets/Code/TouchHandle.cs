@@ -7,7 +7,8 @@ public class TouchHandle : MonoBehaviour {
 
 
 	public virtual Vector2 pad2pos(Vector2 pad){
-		return new Vector2(pad.x * 110f, pad.y * 70f);
+		Vector2 p = pad - new Vector2 (0.5f, 0.5f);
+		return new Vector2(p.x * 110f, p.y * 70f);
 	}
 	public virtual void touchWho(GameObject obj){
 		Debug.Log (obj.name);
