@@ -15,12 +15,13 @@ public class Keyboard : MonoBehaviour {
 		}
 		return keys_;
 	}
+
+	/*
 	private State getUpper(){
 		StateWithEventMap swem = new StateWithEventMap ();
 		swem.onStart += delegate {
 			Key[] keys = getKeys();
 			for(int i =0; i<keys.Length; ++i){
-
 				keys[i].upper();
 			}
 		};
@@ -28,40 +29,68 @@ public class Keyboard : MonoBehaviour {
 		swem.addAction ("number", "number");
 		return swem;
 	}
-
+*/
 
 	public void init(){
-		//this.gameObject.SetActive (true);
+		this._sample.gameObject.SetActive (true);
+		this.gameObject.SetActive (false);
 
 	}
 
 	public void shutdown(){
 
 		this.gameObject.SetActive (false);
+		this._sample.gameObject.SetActive (false);
 	}
+
+	public void toLower(){
+	
+		Key[] keys = getKeys();
+		for(int i =0; i<keys.Length; ++i){
+			keys[i].lower();
+		}
+	}
+	/*
 	private State getLower(){
 		StateWithEventMap swem = new StateWithEventMap ();
 		swem.onStart += delegate {
-			Key[] keys = getKeys();
-			for(int i =0; i<keys.Length; ++i){
-
-				keys[i].lower();
-			}
+			toLower();
 		};
 		swem.addAction ("shift", "upper");
 		swem.addAction ("number", "number");
 		return swem;
 	}
+	*/
+	public void toUpper(){
+
+		Key[] keys = getKeys();
+		for(int i =0; i<keys.Length; ++i){
+			keys[i].upper();
+		}
+	}
+	public void toNumber(){
+
+		Key[] keys = getKeys();
+		for(int i =0; i<keys.Length; ++i){
+			keys[i].number();
+		}
+	}
+
+	public void toPunctuation(){
 
 
+		Key[] keys = getKeys();
+		for(int i =0; i<keys.Length; ++i){
+
+			keys[i].punctuation();
+		}
+	}
+
+	/*
 	private State getNumber(){
 		StateWithEventMap swem = new StateWithEventMap ();
 		swem.onStart += delegate {
-			Key[] keys = getKeys();
-			for(int i = 0; i<keys.Length; ++i){
-
-				keys[i].number();
-			}
+			toNumber();
 		};
 		swem.addAction ("shift", "punctuation");
 		swem.addAction ("number", "lower");
@@ -69,7 +98,7 @@ public class Keyboard : MonoBehaviour {
 		return swem;
 	}
 
-	public void input(Key key){
+	public void _input(Key key){
 		if (key._type == Key.Type.Shift) {
 			fsm_.post ("shift");
 		}else if (key._type == Key.Type.Del) {
@@ -96,7 +125,6 @@ public class Keyboard : MonoBehaviour {
 		};
 		swem.addAction ("shift", "number");
 		swem.addAction ("number", "lower");
-		//InputField.
 		return swem;
 	}
 	void Start () {
@@ -106,6 +134,6 @@ public class Keyboard : MonoBehaviour {
 		fsm_.addState ("punctuation", getPunctuation());
 		fsm_.init ("lower");
 	}
-	
+	*/
 
 }

@@ -8,78 +8,98 @@ using Valve.VR;
 
 public class TouchUI : MonoBehaviour {
 	
-	public TouchKey _touchKey = null;
-	public TouchPalette _palette = null;
-	private TouchHandle handle_ = null;
+	//public TouchKey _touchKey = null;
+	//public TouchPalette _palette = null;
+	//private TouchHandle handle_ = null;
+
+	public InputManager _inputManager = null;
 	public Camera _camera;
 	public GameObject _biao;
 	public SteamVR_TrackedController _tracked = null;
 	private VRControllerState_t controllerState_;
 
 	private FSM fsm_ = new FSM ();
-	private FSM fsm2_ = new FSM ();
+	//private FSM typeFsm_ = new FSM ();
 
-	private State getLeave(){
+	private State getLeaved(){
 		StateWithEventMap swem = new StateWithEventMap ();
-
-
-
 
 
 		swem.addAction ("touched", "touched");
 		swem.addAction ("clicked", "clicked");
 		swem.onStart += delegate() {
-			handle_.leave();
+			_inputManager.handle.leavedIn();
+
 			_biao.SetActive(false);
 			SphereCollider c = this.GetComponent<SphereCollider>();
 			c.enabled = false;
-		};
+			_inputManager.locked = false;
 
+		};
+		swem.onOver += delegate {
+
+			_inputManager.locked = true;
+			_inputManager.handle.leavedOut();
+		};
 
 		return swem;
 	}
 
 
-	private State getTouch(){
+	private State getTouched(){
 		StateWithEventMap swem = new StateWithEventMap ();
 
 
 		swem.onStart += delegate() {
-			handle_.touched();
+			//_inputManager._touchKey.touched();
 
+			_inputManager.handle.touchedIn();
 			SphereCollider c = this.GetComponent<SphereCollider>();
 			c.enabled = true;
 			_biao.SetActive(true);
 		};
 		swem.addAction ("clicked", "clicked");
 		swem.addAction ("untouched", "leave");
+
+		swem.onOver += delegate {
+
+			_inputManager.handle.touchedOut();
+		};
 		return swem;
 	}
 
 	public void OnTriggerEnter(Collider other){
 
-		handle_.touchWho (other.gameObject);
+		_inputManager.handle.touchIn (other.gameObject);
 	}
 
 	public void OnTriggerExit(Collider other){
-		handle_.touchOut (other.gameObject);
+		_inputManager.handle.touchOut (other.gameObject);
+	}/*
+	private State getInit(){
+		StateWithEventMap swem = TaskState.Create (delegate {
+			Task task = new Task();
+			TaskManager.PushFront(task, delegate {
+				this._touchKey.shutdown();
+				this._palette.shutdown();
+			});
+			return task;
+		}, this.typeFsm_, "keyboard");
+
+		return swem;
 	}
 	private State getKeyboard(){
 		StateWithEventMap swem = new StateWithEventMap ();
 		swem.onStart += delegate {
-
-			Debug.Log ("nna");
 			_touchKey.init();
 			this.handle_ = _touchKey;
 		};
 		swem.onOver += delegate {
-
-			Debug.Log ("nnb");
+			
 			_touchKey.shutdown();
 		};
 
 		swem.addAction ("unmenu", delegate {
-			Debug.Log("!!!!!menu");
 			return "palette";
 		});
 		return swem;
@@ -89,7 +109,6 @@ public class TouchUI : MonoBehaviour {
 		StateWithEventMap swem = new StateWithEventMap ();
 		swem.onStart += delegate {
 
-			Debug.Log ("nnc");
 			_palette.init();
 			this.handle_ = _palette;
 		};
@@ -101,17 +120,24 @@ public class TouchUI : MonoBehaviour {
 		swem.addAction ("unmenu", "keyboard");
 		return swem;
 	}
-
+*/
 	private State getClicked(){
 		StateWithEventMap swem = new StateWithEventMap ();
 		swem.onStart += delegate() {
 			Debug.Log("i am clicked!");
-			handle_.clicked();
+
+			_inputManager.handle.clickedIn();
+		//	_inputManager._touchKey.clicked();
 		};
 		swem.addAction ("untouched", "leave");
 		swem.addAction ("unclicked", "touched");
+		swem.onOver += delegate() {
+			_inputManager.handle.clickedOut();
+		};
 		return swem;
 	}
+
+
 
 	// Use this for initialization
 	void Start () {
@@ -121,7 +147,7 @@ public class TouchUI : MonoBehaviour {
 			updatePosition(_camera.ScreenToViewportPoint(gesture.position));
 
 		};
-		handle_ = this._touchKey;
+		//handle_ = this._touchKey;
 		_tracked.PadClicked += delegate(object sender, ClickedEventArgs e) {
 			fsm_.post ("clicked");
 		};
@@ -136,28 +162,29 @@ public class TouchUI : MonoBehaviour {
 
 			fsm_.post ("unclicked");
 		};
-		_tracked.MenuButtonClicked += delegate(object sender, ClickedEventArgs e) {
-			fsm2_.post ("menu");
+		/*_tracked.MenuButtonClicked += delegate(object sender, ClickedEventArgs e) {
+			typeFsm_.post ("menu");
 		};
 
 
 		_tracked.MenuButtonUnclicked += delegate(object sender, ClickedEventArgs e) {
-			fsm2_.post ("unmenu");
-		};
-		fsm_.addState ("leave", getLeave ());
-		fsm_.addState ("touched", getTouch ());
+			typeFsm_.post ("unmenu");
+		};*/
+		fsm_.addState ("leave", getLeaved ());
+		fsm_.addState ("touched", getTouched ());
 		fsm_.addState ("clicked", getClicked ());
 		fsm_.init("leave");
+		/*
 
-		fsm2_.addState ("keyboard", getKeyboard());
-		fsm2_.addState ("palette", getPalette());
-		fsm2_.init ("keyboard");
+		typeFsm_.addState ("init", getInit());
+		typeFsm_.addState ("keyboard", getKeyboard());
+		typeFsm_.addState ("palette", getPalette());
+		typeFsm_.init ("init");*/
 	}
 
 	private void updatePosition(Vector2 pad){
 
-		var pos = handle_.pad2pos (pad);
-//		Debug.Log (pad + "!" + pos);
+		var pos = _inputManager.handle.pad2pos (pad);
 		var position = this.transform.localPosition;
 		position.x = pos.x;
 		position.y = pos.y;
@@ -166,13 +193,11 @@ public class TouchUI : MonoBehaviour {
 	void FixedUpdate(){
 		
 		var system = OpenVR.System;
-		if (handle_ != null && system != null && system.GetControllerState (_tracked.controllerIndex, ref controllerState_)) {
+		if (_inputManager.handle != null && system != null && system.GetControllerState (_tracked.controllerIndex, ref controllerState_)) {
 			updatePosition (new Vector2 ((controllerState_.rAxis0.x + 1f) / 2, (controllerState_.rAxis0.y + 1f) / 2));
 		}
 	}
 	void Update () {
-		//var f = SteamVR_Controller.GetDeviceIndex (SteamVR_Controller.DeviceRelation.FarthestRight);
-		//Debug.Log (f);
 		if (Input.GetKeyDown (KeyCode.Z)) {
 
 			fsm_.post ("clicked");
@@ -193,14 +218,14 @@ public class TouchUI : MonoBehaviour {
 
 			fsm_.post ("untouched");
 		}
+		/*
 		if (Input.GetKey (KeyCode.Tab)) {
-			Debug.Log ("@@@@");
-			fsm2_.post ("menu");
+			typeFsm_.post ("menu");
 		}
 		if (Input.GetKeyUp (KeyCode.Tab)) {
 
-			fsm2_.post ("unmenu");
-		}
+			typeFsm_.post ("unmenu");
+		}*/
 
 
 	}

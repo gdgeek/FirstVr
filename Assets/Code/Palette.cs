@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+﻿	using UnityEngine;
 using System.Collections;
 using GDGeek;
 using UnityEngine.UI;
@@ -17,7 +17,6 @@ public class Palette : MonoBehaviour {
 	public void color(){
 		_palette.sprite = _colorPalette;
 		_change.sprite = _colorChange;
-		//_change
 	}
 
 	public void gray(){
@@ -29,7 +28,9 @@ public class Palette : MonoBehaviour {
 	}
 
 	public void init(){
-		this.gameObject.SetActive (true);
+
+		this._sample.gameObject.SetActive (true);
+		this.gameObject.SetActive (false);
 	}
 	public Color getColor(Vector3 point){
 		_pen.transform.position = point;
@@ -42,6 +43,7 @@ public class Palette : MonoBehaviour {
 	public void shutdown(){
 
 		this.gameObject.SetActive (false);
+		this._sample.gameObject.SetActive (false);
 	}
 
 

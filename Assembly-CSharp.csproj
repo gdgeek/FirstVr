@@ -67,7 +67,7 @@
      <Compile Include="Assets\Code\Setup.cs" />
      <Compile Include="Assets\Code\Test2.cs" />
      <Compile Include="Assets\Code\TouchHandle.cs" />
-     <Compile Include="Assets\Code\TouchKey.cs" />
+     <Compile Include="Assets\Code\TouchKeyboard.cs" />
      <Compile Include="Assets\Code\TouchPalette.cs" />
      <Compile Include="Assets\Code\TouchUI.cs" />
      <Compile Include="Assets\Code\Trigger.cs" />
@@ -218,6 +218,7 @@
      <Compile Include="Assets\GDGeek\_MK\_MKGlowSystem\_Demo\Code\MK_RotateObject.cs" />
      <Compile Include="Assets\GDGeek\_MK\_MKGlowSystem\_Internal\MKGlow.cs" />
      <Compile Include="Assets\GDGeek\_MK\_MKGlowSystem\_Internal\MKGlowSystemHelpWindow.cs" />
+     <Compile Include="Assets\InputManager.cs" />
      <Compile Include="Assets\PaletteButton.cs" />
      <Compile Include="Assets\SteamVR\Extras\SteamVR_GazeTracker.cs" />
      <Compile Include="Assets\SteamVR\Extras\SteamVR_LaserPointer.cs" />
