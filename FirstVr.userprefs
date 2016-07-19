@@ -1,13 +1,9 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\SteamVR\Scripts\SteamVR_Controller.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/GDGeek/_MK/_MKGlowSystem/_Demo/Code/MK_DemoControl.cs">
     <Files>
-      <File FileName="Assets\Code\Keyboard.cs" Line="34" Column="5" />
-      <File FileName="Assets\Code\TouchKey.cs" Line="75" Column="15" />
-      <File FileName="Assets\Code\Palette.cs" Line="32" Column="3" />
-      <File FileName="Assets\Code\TouchPalette.cs" Line="13" Column="27" />
-      <File FileName="Assets\Code\TouchUI.cs" Line="171" Column="4" />
-      <File FileName="Assets\SteamVR\Scripts\SteamVR_Controller.cs" Line="157" Column="22" />
+      <File FileName="Assets/GDGeek/Plugins/Voxel/New/Effect/VoxelFilterGlow.cs" Line="14" Column="6" />
+      <File FileName="Assets/GDGeek/_MK/_MKGlowSystem/_Demo/Code/MK_DemoControl.cs" Line="13" Column="28" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

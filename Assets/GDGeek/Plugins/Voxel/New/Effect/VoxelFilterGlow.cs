@@ -9,9 +9,9 @@ namespace GDGeek{
 
 				Color c = clone.colors [i];
 				Vector2 uv = Vector2.zero;
-
-				uv.x =1.0f;
-
+				if (c.g == 0) {
+					uv.x = 1.0f;
+				}
 				clone.uvs [i] = uv;
 			}
 			return clone;
