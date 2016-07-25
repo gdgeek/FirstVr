@@ -4,8 +4,9 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using System.Collections.Generic;
 using GDGeek;
+#if UNITY_STANDALONE_WIN
 using Valve.VR;
-
+#endif
 public class TouchUI : MonoBehaviour {
 	
 	//public TouchKey _touchKey = null;
@@ -15,8 +16,11 @@ public class TouchUI : MonoBehaviour {
 	public InputManager _inputManager = null;
 	public Camera _camera;
 	public GameObject _biao;
+
+	#if UNITY_STANDALONE_WIN
 	public SteamVR_TrackedController _tracked = null;
 	private VRControllerState_t controllerState_;
+	#endif
 
 	private FSM fsm_ = new FSM ();
 	//private FSM typeFsm_ = new FSM ();
