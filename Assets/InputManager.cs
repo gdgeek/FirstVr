@@ -1,15 +1,19 @@
 using UnityEngine;
 using System.Collections;
 using GDGeek;
-using Valve.VR;
 
+#if UNITY_STANDALONE_WIN
+using Valve.VR;
+#endif
 public class InputManager : MonoBehaviour {
 	public TouchKeyboard _keyboard = null;
 	public TouchPalette _palette = null;
 	private TouchHandle handle_ = null;
 	private bool locked_ = false;
-	public SteamVR_TrackedController _tracked = null;
 
+	#if UNITY_STANDALONE_WIN
+	public SteamVR_TrackedController _tracked = null;
+	#endif
 	public bool locked{
 		set{ 
 			locked_ = value;
